@@ -1,0 +1,11 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - override /robot: franka_iiil
+
+env:
+  env_type: sim_franka
+  cfg:
+    env:
+      frequency: 30  # Control frequency in Hz

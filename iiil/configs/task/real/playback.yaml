@@ -1,0 +1,17 @@
+# @package _global_
+
+# Playback configuration - no timeout to allow full trajectory replay
+
+task:
+  type: EmptyTask
+  name: ${task.type}
+  task_info_range: null
+  pcd_range: null
+  show_trajectory: false
+  termination_config:
+    hold_step_threshold: 20
+    # No auto-timeout - episode ends only when trajectory completes
+    episode_timeout_step: null
+    # No episode limit - block ends only when all demos are played
+    total_episode: null
+    total_successful_episode: null

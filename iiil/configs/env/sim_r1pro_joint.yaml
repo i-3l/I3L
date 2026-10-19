@@ -1,0 +1,83 @@
+
+# @package _global_
+
+defaults:
+  - _self_ 
+  - override /robot: r1pro_iiil
+
+env:
+  env_type: sim
+  cfg:
+    env: 
+      action_frequency: 30
+      rendering_frequency: 30
+      physics_frequency: 120  
+      flatten_obs_space: true
+          
+    render:
+      viewer_width: 1280
+      viewer_height: 720
+
+    scene:
+      type: InteractiveTraversableScene
+      scene_model: Rs_int
+      load_object_categories: [floors, openable_window]
+
+    robots:
+      - model: r1pro
+        name: robot
+        action_normalize: false
+        grasping_mode: assisted
+        obs_modalities: [proprio, rgb]
+        sensor_config:
+          VisionSensor:
+            sensor_kwargs:
+              image_height: 240
+              image_width: 240
+        default_reset_mode: tuck
+        controller_config:
+          base:
+            name: HolonomicBaseJointController
+            motor_type: position
+            use_impedances: false
+            command_input_limits: null
+          trunk:
+            name: JointController
+            motor_type: position
+            use_impedances: false
+            use_delta_commands: false
+            command_input_limits: null
+          arm_left:
+            name: JointController
+            motor_type: position
+            use_impedances: false
+            use_delta_commands: false
+            command_input_limits: null
+          arm_right:
+            name: JointController
+            motor_type: position
+            use_impedances: false
+            use_delta_commands: false
+            command_input_limits: null
+          gripper_left:
+            name: MultiFingerGripperController
+            mode: smooth
+          gripper_right:
+            name: MultiFingerGripperController
+            mode: smooth
+        position: [-1.0, 0.0, 0.0]
+        orientation: [0.0, 0.0, 0.0, 1.0]
+
+    objects:
+      - type: LightObject
+        name: background_light
+        prim_path: /World/background_light
+        light_type: Dome
+        intensity: 800
+      - type: LightObject
+        name: top_light
+        prim_path: /World/top_light
+        light_type: Distant
+        intensity: 300
+
+    task: ${task}

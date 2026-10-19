@@ -1,0 +1,72 @@
+# @package _global_
+# v12: Stage 1 (new code) — action head only, no gate, zero-sup
+# Original: Run 12, new code baseline
+# Result: 68% SR
+# First-stage checkpoint used by simple_residual_a1_v13.
+
+arch_name: simple_residual_a1_v12
+
+wandb_entity: I3L
+wandb_project: IIIL
+
+horizon: 1
+num_latest_obs: 1
+deployed_action_steps: 1
+
+module:
+  _target_: il_lib.policies.SimpleResidualPolicy
+  prop_dim: 7
+  prop_keys: [qpos/arm, qpos/gripper]
+  feature_extractors:
+    proprioception:
+      _target_: il_lib.nn.features.Identity
+      input_dim: ${module.prop_dim}
+    task:
+      _target_: il_lib.nn.common.MLP
+      input_dim: 6
+      hidden_dim: 256
+      output_dim: 256
+      hidden_depth: 2
+      add_output_activation: true
+    base_action:
+      _target_: il_lib.nn.features.Identity
+      input_dim: ${module.action_dim}
+  feature_fusion_hidden_depth: 1
+  feature_fusion_hidden_dim: 256
+  feature_fusion_output_dim: 256
+  feature_fusion_activation: relu
+  feature_fusion_add_input_activation: false
+  feature_fusion_add_output_activation: false
+  action_dim: 7
+  action_net_hidden_dim: 128
+  action_net_hidden_depth: 3
+  action_net_activation: relu
+  # No gate, zero-sup + L1 (stage 1 of two-stage)
+  use_intervention_head: false
+  intervention_loss_weight: 0.0
+  supervise_zero_residual_off_intervention: true
+  zero_residual_loss_weight: 1.0
+  off_intervention_residual_l1_weight: 0.5
+  predict_oracle_action: false
+  residual_dead_zone: 0.0
+  train_all_steps: false
+  optimizer: adam
+  base_policy: dp_a1
+  base_policy_ckpt_path: null
+
+policy_wrapper:
+  _target_: il_lib.policies.policy_base.ResidualPolicyWrapper
+  base_deployed_action_steps: 8
+
+data:
+  dataset_class: iiil.datas.IIILDataset
+  reweight_strategy: null
+  use_action_chunks: false
+  visual_obs_types: [rgb]
+  use_task_info: true
+  load_visual_obs_to_memory: true
+  rank_based_partitioning: true
+  downsample_factor: 1
+
+trainer:
+  use_distributed_sampler: ${eval:'not ${data.rank_based_partitioning}'}

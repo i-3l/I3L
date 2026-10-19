@@ -1,0 +1,11 @@
+# @package _global_
+
+task:
+  type: AutotuneTask
+  name: ${task.type}
+  show_trajectory: false
+  termination_config:
+    hold_step_threshold: 15
+    episode_timeout_step: 600
+    total_episode: 9999
+    total_successful_episode: null

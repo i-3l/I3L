@@ -1,0 +1,14 @@
+# @package _global_
+
+
+task:
+  type: EmptyTask
+  name: ${task.type}
+  task_info_range: null
+  pcd_range: null
+  show_trajectory: false
+  termination_config:
+    hold_step_threshold: 20
+    episode_timeout_step: null
+    total_episode: null
+    total_successful_episode: null

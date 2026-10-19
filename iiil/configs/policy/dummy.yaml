@@ -1,0 +1,6 @@
+type: il
+control_type: joint
+robot_type: ${robot.type}
+use_websocket: false
+action_dim: 23 #${robot.action_dim}
+ema_alpha: 0.2

@@ -1,0 +1,20 @@
+# @package _global_
+
+mode: collection
+
+task:
+  type: PickPlaceTask
+  name: ${task.type}
+  show_trajectory: false
+  n_objects: 1
+  randomize_initial_pose: true
+  randomize_robot_pose_prob: 0.0
+  randomize_trajectory_prob: 0.0
+  is_target_fixed: true
+  fixed_object_poses_path: null
+  save_object_poses_path: null
+  termination_config:
+    hold_step_threshold: 20
+    episode_timeout_step: 400
+    total_episode: 125
+    total_successful_episode: null

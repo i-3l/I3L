@@ -1,0 +1,6 @@
+type: mahalanobis_release_detector
+calibration_path: null
+release_threshold: 10.0
+window_size: 5
+use_moving_average: true
+ma_window: 5

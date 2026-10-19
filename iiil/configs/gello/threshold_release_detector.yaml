@@ -1,0 +1,12 @@
+type: threshold_release_detector
+
+# Logging configuration
+log_path: "release_detection_log.h5"  # Path to save the hdf5 log file. If null, no logging will be done.
+log_frequency: 100  # Number of samples to collect before writing to the h5py file
+
+# Filter configuration
+filter_width: 10  # Width of the moving average filter for smoothing eef movement
+
+# Threshold configuration
+movement_threshold: 0.001  # Threshold for end-effector movement to be considered stationary
+stationary_timesteps: 10  # Number of timesteps the eef must be stationary to trigger release detection 

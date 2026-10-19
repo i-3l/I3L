@@ -1,0 +1,16 @@
+type: sklearn_interrupt_detector
+
+# Path to the trained sklearn regression model (joblib or pickle file)
+model_path: null  # Set to your trained model, e.g. policy.interrupt_detector_config.model_path=/path/to/model.joblib
+
+# Threshold for difference between measured and predicted current to trigger interruption
+current_diff_threshold: 1000.0
+
+# Features to use from gello_obs (must match model training)
+obs_features:
+  - joint_angles
+  - gravity_currents
+
+# Logging configuration
+log_path: null  # Set to a file path to enable logging
+log_frequency: 100

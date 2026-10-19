@@ -1,0 +1,26 @@
+type: policy_comparison_detector
+
+# Buffer configuration
+buffer_size: 1  # Number of timesteps to keep in the action buffers
+
+# Threshold configuration
+
+# R1Pro
+# interrupt_threshold: [0.25, 0.7]  # Similarity threshold above which to trigger interrupt (smaller means more likely to interrupt)
+# release_threshold: [0.2, 0.15]  # Similarity threshold below which to trigger release (larger means more likely to release, should always be < interrupt_threshold)
+
+# A1
+interrupt_threshold: [0.720, 0.480]  # Similarity threshold above which to trigger interrupt (smaller means more likely to interrupt)
+release_threshold: [0.336, 0.192]  # Similarity threshold below which to trigger release (larger means more likely to release, should always be < interrupt_threshold)
+
+
+moving_threshold: 0.001   # Minimum action magnitude to consider for detection
+
+# Distance metric configuration (inspired by reference implementation)
+distance_metric: ["cosine", "l1"]
+# Aggregation metric configuration (inspired by reference implementation)
+aggregate_metric: "mean"  # Options: "mean", "min", "max", "median"
+
+# Moving average configuration
+use_moving_average: true  # Whether to apply moving average smoothing to similarity scores
+ma_window: 5  # Window size for moving average filter 

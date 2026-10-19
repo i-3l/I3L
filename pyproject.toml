@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "iiil"
+version = "0.1"
+description = "Iterative and Interactive Imitation Learning (IIIL) for Mobile Manipulation"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "IIIL Developers"}
+]
+keywords = ["Deep Learning", "Machine Learning"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Environment :: Console",
+    "Programming Language :: Python :: 3",
+]
+requires-python = ">=3.10"
+# OmniGibson (BEHAVIOR-1K) and il_lib are installed from source; see README.md.
+dependencies = [
+    "numpy<2",
+    "torch",
+    "hydra-core",
+    "omegaconf",
+    "pyyaml",
+    "gymnasium",
+    "h5py",
+    "opencv-python",
+    "av",
+    "matplotlib",
+    "pandas",
+    "tqdm",
+    "msgpack",
+    "websockets",
+    "dynamixel_sdk",
+    "pin",
+    "joycon-python",
+    "pyserial",
+]
+
+[project.optional-dependencies]
+lerobot = ["lerobot"]
+detectors = ["joblib", "scikit-learn"]
+mujoco = ["mujoco"]
+dev = ["pytest"]
+
+[project.urls]
+Homepage = "https://github.com/i-3l/I3L"
+
+[tool.setuptools]
+include-package-data = true
+zip-safe = false
+
+[tool.setuptools.packages.find]
+include = ["iiil*"]

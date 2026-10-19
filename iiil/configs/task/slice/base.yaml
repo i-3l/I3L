@@ -1,0 +1,16 @@
+# @package _global_
+
+task:
+  type: SliceTask
+  name: ${task.type}
+  task_info_range: null
+  pcd_range: null
+  show_trajectory: false
+  n_objects: 1
+  randomize_initial_pose: true
+  is_target_fixed: false
+  termination_config:
+    hold_step_threshold: 20
+    episode_timeout_step: 600
+    total_episode: 10
+    total_successful_episode: null

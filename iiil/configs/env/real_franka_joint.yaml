@@ -1,0 +1,57 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - override /robot: franka_iiil
+
+env:
+  env_type: real_franka
+  cfg:
+    env:
+      frequency: 30  # Control frequency in Hz
+    # Gripper "open" travel cap: deoxys maps action -> width 0.08*|action| and
+    # the Hand's finger speed is firmware-capped (~0.1 m/s measured), so a
+    # smaller open width is the only way to open faster. -1.0 = full 80 mm;
+    # e.g. -0.75 opens to 60 mm in ~25% less time (less clearance!).
+    gripper_open_action: -1.0
+    # Enabled explicitly by run.sh modes 10 and 11.
+    camera_viewer:
+      enabled: false
+      show_takeover_count: false
+    cameras:
+      wrist:
+        name: "robot:zed_wrist:Camera:0"
+        device: "/dev/zed_wrist"
+        capture_resolution: [720, 2560]  # [height, width], stereo side-by-side
+        capture_fps: 30
+        resolution: [240, 240]
+        crop_size: 720
+        crop_offset: [0, 0]  # [x, y] pixels: +x right, +y down
+        v4l2:
+          brightness: 5
+          contrast: 3
+          saturation: 3
+          gain: 1
+          gamma: 100
+          sharpness: 0
+          white_balance_automatic: 0
+          hue_automatic: 0
+          white_balance_temperature: 4200
+      external:
+        name: "robot:zed_external:Camera:0"
+        device: "/dev/zed_external"
+        capture_resolution: [720, 2560]  # [height, width], stereo side-by-side
+        capture_fps: 30
+        resolution: [240, 240]
+        crop_size: 600  # Leaves 120 px of vertical margin for y adjustment
+        crop_offset: [-30, -60]  # [x, y] pixels: +x right, +y down
+        v4l2:
+          brightness: 3
+          contrast: 3
+          saturation: 3
+          gain: 0
+          gamma: 100
+          sharpness: 0
+          white_balance_automatic: 0
+          hue_automatic: 0
+          white_balance_temperature: 3800

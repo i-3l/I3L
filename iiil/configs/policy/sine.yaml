@@ -1,0 +1,5 @@
+type: sine
+control_type: joint
+action_dim: 8
+amplitude: 0.3
+period: 4.0

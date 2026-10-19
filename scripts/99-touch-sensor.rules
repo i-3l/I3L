@@ -1,0 +1,16 @@
+# Udev rule for ESP32-S3 USB CDC (Capacitive Touch Sensor)
+# Creates a stable /dev/tty_touch_sensor symlink.
+#
+# Install:
+#   sudo cp scripts/99-touch-sensor.rules /etc/udev/rules.d/
+#   sudo udevadm control --reload-rules
+#   sudo udevadm trigger
+#
+# Verify:
+#   ls -la /dev/tty_touch_sensor
+#
+# Note: If you have multiple ESP32-S3 devices, refine with ATTRS{serial}
+# to match a specific device. Find the serial with:
+#   udevadm info -a /dev/ttyACM0 | grep serial
+
+SUBSYSTEM=="tty", ATTRS{idVendor}=="303a", ATTRS{idProduct}=="1001", SYMLINK+="tty_touch_sensor", MODE="0666"

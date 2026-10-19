@@ -1,0 +1,9 @@
+type: il
+control_type: joint
+robot_type: ${robot.type}
+use_websocket: true
+host: 0.0.0.0
+port: 8000
+action_dim: ${robot.action_dim}
+ema_alpha: null
+allow_reconnect: true

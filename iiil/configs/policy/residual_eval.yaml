@@ -1,0 +1,35 @@
+# Evaluation config: residual policy + CuRobo oracle for live metrics
+# Uses SharedAutonomyPolicy with switching DISABLED — residual always controls.
+# CuRobo runs in background to provide oracle ground truth at every step.
+type: sa
+control_type: joint
+robot_type: ${robot.type}
+
+# Base policy = residual (served via websocket)
+base_policy:
+  type: il
+
+# Oracle = CuRobo (provides ground truth, never takes control)
+oracle_policy:
+  type: curobo
+  action_buffer_len: 20
+
+# DISABLE switching — very high thresholds so interrupt never triggers
+switch_check_interval: 999999
+switch_min_interval: 999999
+
+# Keep detector for logging scores, but it won't trigger
+interrupt_detector: policy_comparison_detector
+interrupt_detector_config:
+  interrupt_threshold: [99.0, 99.0]
+release_detector: policy_comparison_detector
+release_detector_config:
+  release_threshold: [0.0, 0.0]
+
+detector_component_weights:
+  base: 1.0
+  torso: 0.0
+  left_arm: 0.0
+  left_gripper: 0.0
+  right_arm: 1.0
+  right_gripper: 1.0

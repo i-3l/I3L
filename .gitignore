@@ -1,0 +1,57 @@
+__pycache__
+*.DS_Store
+*.h5
+*.hdf5
+*.mp4
+test/
+.vscode/
+outputs/
+*.egg-info/
+run_task.log
+.bashrc.user
+.pytest_cache/
+
+# generated USD
+assets/gello_urdf/gello
+
+logs/
+
+# Local credentials and generated diagnostics
+.env
+.env.*
+!.env.example
+*.log
+*.out
+*.err
+wandb/
+urdf_output/
+
+# Onshape export metadata (runtime uses the URDF and STL files)
+/assets/**/*.part
+
+# Auto-tune iteration backups
+*.yaml.iter*
+
+# Generated tracking error plots
+scripts/tracking_plots/
+
+.git_credentials_local
+/data/
+/results
+eval_results/
+
+# Local camera-placement reference images captured by ./align.sh
+/alignment_references/
+
+# MuJoCo GLFW error log
+MUJOCO_LOG.TXT
+
+
+# Local agent/tooling state and large local artifacts
+.claude/
+.codex
+.agents/
+CLAUDE.md
+AGENTS.md
+checkpoints/
+tmp/

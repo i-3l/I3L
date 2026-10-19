@@ -1,0 +1,93 @@
+# @package _global_
+
+arch_name: wbvima_r1pro_state
+
+wandb_entity: I3L
+wandb_project: IIIL
+
+# ====== Policy specific ======
+horizon: 2
+num_latest_obs: 2
+deployed_action_steps: 8
+wd: 0.1
+bs: 128
+vbs: 16
+max_steps: 125000
+val_check_interval: 12500
+
+# ====== Policy Module ======
+module:
+  _target_: il_lib.policies.WBVIMA
+  prop_dim: 23
+  prop_keys: 
+    - odom/base_velocity
+    - qpos/torso
+    - qpos/left_arm
+    - qpos/left_gripper
+    - qpos/right_arm
+    - qpos/right_gripper
+  num_latest_obs: ${num_latest_obs}
+  # ====== Feature Extractors ======
+  feature_extractors:
+    proprioception:
+      _target_: il_lib.nn.common.MLP
+      input_dim: ${module.prop_dim}
+      hidden_dim: 512
+      output_dim: ${module.xf_n_embd}
+      hidden_depth: 2
+      add_output_activation: true
+    task:
+      _target_: il_lib.nn.common.MLP
+      input_dim: 14
+      hidden_dim: 512
+      output_dim: 512
+      hidden_depth: 2
+      add_output_activation: true
+  use_modality_type_tokens: false
+  # ====== Transformer ======
+  xf_n_embd: 512
+  xf_n_layer: 2
+  xf_n_head: 8
+  xf_dropout_rate: 0.1
+  xf_use_geglu: true
+  # ====== Action Decoding ======
+  learnable_action_readout_token: false
+  action_dim: 23
+  action_prediction_horizon: ${deployed_action_steps}
+  diffusion_step_embed_dim: 128
+  unet_down_dims: [64, 128]
+  unet_kernel_size: 5
+  unet_n_groups: 8
+  unet_cond_predict_scale: true
+  action_keys: ${robot.action_keys}
+  action_key_dims: ${robot.action_key_dims}
+  # ====== Diffusion ======
+  noise_scheduler:
+    _target_: diffusers.schedulers.scheduling_ddim.DDIMScheduler
+    num_train_timesteps: 100
+    beta_start: 0.0001
+    beta_end: 0.02
+    # beta_schedule is important
+    # this is the best we found
+    beta_schedule: squaredcos_cap_v2
+    clip_sample: true
+    set_alpha_to_one: true
+    steps_offset: 0
+    prediction_type: epsilon # or sample
+  noise_scheduler_step_kwargs: null
+  num_denoise_steps_per_inference: 16
+  loss_on_latest_obs_only: false
+
+data:
+  dataset_class: iiil.datas.IIILSamplingDataset
+  reweight_strategy: null
+  use_action_chunks: true
+  visual_obs_types: [rgb]
+  action_prediction_horizon: ${deployed_action_steps}
+  use_task_info: true
+  load_visual_obs_to_memory: false
+  rank_based_partitioning: false
+  downsample_factor: 1
+
+trainer:
+  use_distributed_sampler: ${eval:'not ${data.rank_based_partitioning}'}

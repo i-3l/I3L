@@ -1,0 +1,13 @@
+# Noise Policy Configuration
+type: noise
+control_type: joint
+robot_type: ${robot.type}
+
+noise_scale: 0.015
+n_noise_step: 50
+noise_every_n_step: 100
+
+# Base policy configuration (the policy that normally controls the robot)
+base_policy:
+  type: curobo
+  action_buffer_len: 10

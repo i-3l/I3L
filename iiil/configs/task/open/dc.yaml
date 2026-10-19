@@ -1,0 +1,16 @@
+# @package _global_
+
+mode: collection
+
+task:
+  type: OpenTask
+  name: ${task.type}
+  show_trajectory: false
+  n_objects: 1
+  randomize_robot_pose_prob: 1.0
+  randomize_initial_pose_prob: 1.0
+  termination_config:
+    hold_step_threshold: 20
+    episode_timeout_step: 450
+    total_episode: null
+    total_successful_episode: 20

@@ -1,0 +1,22 @@
+# Waypoint Policy Configuration
+type: waypoint
+action_buffer_len: null
+control_type: ik
+robot_type: ${robot.type}
+
+# square trajectory
+waypoints:
+  - [0.4, -0.1, 0.3]  # Front left corner
+  - [0.6, -0.1, 0.3]  # Front right corner 
+  - [0.6, 0.1, 0.3]   # Back right corner
+  - [0.4, 0.1, 0.3]   # Back left corner
+
+# static point
+# waypoints:
+#   - [0.4, -0.1, 0.3]  # Front left corner
+#   - [0.4, -0.1, 0.3]  # Front left corner
+
+loop: false
+waypoint_reached_threshold: 0.01
+velocity_lower_bound: 0.5
+velocity_upper_bound: 0.5

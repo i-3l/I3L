@@ -1,0 +1,20 @@
+{
+    "url": "",
+    "output_format": "urdf",
+    "set_zero_mass_to_fixed": false,
+    "joint_properties": {
+        "*": {
+            "max_effort": 10.0,
+            "max_velocity": 6.0,
+            "friction": 0.5
+        }
+    }
+}
+
+
+
+
+
+
+
+

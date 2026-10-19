@@ -1,0 +1,335 @@
+# R1Pro Bilateral GELLO Configuration
+# Two mirrored R1Pro arms (right and left, 7 DOF each)
+# Each arm has 4 high-powered servos (joints 0-3) and 3 low-powered servos (joints 4-6)
+
+type: gello
+
+# Controller type
+bilateral_control_type: bilateral
+
+# Control settings
+control_frequency: 100  # Hz
+driver_type: current  # Only current control for bilateral operation
+debug: false
+
+# Console debug messages (printed to terminal)
+debug_messages:
+  enable: false  # Opt in to console debug messages
+  control_loop: false  # Control loop frequency updates (every 1 second)
+  tracking: false  # ENV_TO_GELLO tracking mode messages (currents, errors)
+  user_control: false  # GELLO_TO_ENV user control mode messages
+  takeover: false  # Takeover detection messages (when user grabs gello)
+  release: false  # Release detection / auto-return messages
+  goal_reached: false  # Goal convergence messages
+
+# Joint offsets in radians (additional to encoder zero at 180°)
+# Set to zeros if using pure absolute encoder readings
+joint_offsets: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+# Home position in radians (used when Home button is pressed)
+# 14 values: right arm (0-6), left arm (7-13)
+# Should match robot's home position (all zeros for R1Pro)
+home_position: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+# GELLO_TO_ENV mode configuration
+# Controls torque behavior when user is directly controlling the arm
+gello_to_env:
+  torque_enabled: true  # true = apply gravity + anti-friction, false = free float
+
+# Motor groups configuration
+# Physical Wiring:
+# - USB0 (High Power): IDs 0-3 = Right Arm, IDs 4-7 = Left Arm (XM430-W350-T)
+# - USB1 (Low Power):  IDs 0-2 = Right Arm, IDs 3-5 = Left Arm (XC330-M288-T)
+# - Both ports use 1Mbps baudrate (configurable)
+motor_groups:
+  # Right Arm - High Power Servos (Joints 0-3)
+  - motor_ids: [0, 1, 2, 3]
+    motor_type: "XM430-W350-T"
+    robot_joint_indices: [0, 1, 2, 3]
+    arm_joint_signs: [-1, -1, -1, -1]
+    device_port: "/dev/tty_large_motor"  # High-power bus
+    baudrate: 1000000  # 1 Mbps
+    max_joint_velocity: 1.5  # rad/s
+    current_limit: 400  # raw Dynamixel units (~1076 mA, 51% of stall)
+    profile_velocity: 100  # ~2.4 rad/s max speed (unit = 0.229 rev/min)
+    profile_acceleration: 40  # ~15 rad/s² max acceleration
+    position_deadband: 3  # encoder ticks (~0.26°) — suppress writes near setpoint to prevent oscillation
+
+  # Right Arm - Low Power Servos (Joints 4-6)
+  - motor_ids: [0, 1, 2]
+    motor_type: "XC330-M288-T"
+    robot_joint_indices: [4, 5, 6]
+    arm_joint_signs: [-1, -1, 1]
+    device_port: "/dev/tty_small_motor"  # Low-power bus
+    baudrate: 1000000  # 1 Mbps
+    max_joint_velocity: 1.5  # rad/s
+    current_limit: 150  # raw Dynamixel units (~150 mA, reduced to prevent shaking)
+    profile_velocity: 50  # ~1.2 rad/s max speed (reduced from 100 to prevent oscillation)
+    profile_acceleration: 15  # ~5.6 rad/s² max acceleration (reduced from 40 to prevent shaking)
+    position_deadband: 3  # encoder ticks (~0.26°) — suppress writes near setpoint to prevent oscillation
+
+  # Left Arm - High Power Servos (Joints 7-10)
+  - motor_ids: [4, 5, 6, 7]
+    motor_type: "XM430-W350-T"
+    robot_joint_indices: [7, 8, 9, 10]
+    arm_joint_signs: [1, -1, -1, 1]  # Mirrored from right arm
+    device_port: "/dev/tty_large_motor"  # High-power bus (shared with right arm)
+    baudrate: 1000000  # 1 Mbps
+    max_joint_velocity: 1.5  # rad/s
+    current_limit: 400  # raw Dynamixel units (~1076 mA, 51% of stall)
+    profile_velocity: 100  # ~2.4 rad/s max speed
+    profile_acceleration: 40  # ~15 rad/s² max acceleration
+    position_deadband: 3  # encoder ticks (~0.26°) — suppress writes near setpoint to prevent oscillation
+
+  # Left Arm - Low Power Servos (Joints 11-13)
+  - motor_ids: [3, 4, 5]
+    motor_type: "XC330-M288-T"
+    robot_joint_indices: [11, 12, 13]
+    arm_joint_signs: [-1, -1, 1]  # Mirrored from right arm
+    device_port: "/dev/tty_small_motor"  # Low-power bus (shared with right arm)
+    baudrate: 1000000  # 1 Mbps
+    max_joint_velocity: 1.5  # rad/s
+    current_limit: 150  # raw Dynamixel units (~150 mA, reduced to prevent shaking)
+    profile_velocity: 50  # ~1.2 rad/s max speed (reduced from 100 to prevent oscillation)
+    profile_acceleration: 15  # ~5.6 rad/s² max acceleration (reduced from 40 to prevent shaking)
+    position_deadband: 3  # encoder ticks (~0.26°) — suppress writes near setpoint to prevent oscillation
+
+# Compensation configuration
+compensation:
+  # Gravity compensation using URDF dynamics
+  gravity:
+    enable: true
+    # Single-arm URDF (LEFT arm). Right arm is mirrored in software for bilateral setups.
+    urdf_path: "assets/gello_r1pro_urdf/robot_7dof.urdf"
+    # Per-joint multipliers (tune these for your hardware)
+    # 7 values for single arm - automatically duplicated for bilateral systems.
+    # Negative multiplier = flip gravity torque direction for that joint.
+    # May need re-tuning after URDF update.
+    # Joints 4-6 (small motors) are 0 since they have negligible gravity load.
+    # right arm is top row
+    # multipliers: [
+    #   0.3, 0.4, 0.02, 0.05, 0.0, 0.3, 0.01,
+    #   0.3, 0.3, 0.02, 0.05, 0.0, 0.3, 0.0
+    # ]
+    multipliers: [
+      0.4, 0.4, 0.1, 0.1, 0.0, 0.3, 0.01,
+      0.3, 0.3, 0.1, 0.1, 0.0, 0.3, 0.0
+    ]
+
+  # Static friction compensation (oscillating torques to overcome stiction)
+  friction:
+    enable: false
+    speed_threshold: 0.9  # rad/s - velocity below which friction comp activates
+    gain: 0.3  # Global gain multiplier
+    # per_joint_gains: [0.3, 0.3, 0.3, 0.3, 0.2, 0.2, 0.2, 0.3, 0.3, 0.3, 0.3, 0.2, 0.2, 0.2]  # Optional per-joint gains
+
+  # Anti-friction compensation (assists backdriving by applying torque in direction of motion)
+  # Counteracts back-EMF resistance when motors are in current control mode
+  # τ = viscous_gain × velocity + coulomb_gain × sign(velocity)
+  # WARNING: If gains are too high, arm will accelerate on its own (positive feedback)
+  anti_friction:
+    enable: true
+    viscous_gain: 0.015    # Nm/(rad/s) - velocity-proportional term (compensates back-EMF)
+    coulomb_gain: 0.0      # Nm - constant friction term (set to 0 to avoid runaway)
+    velocity_deadband: 0.005  # rad/s - prevents oscillation at rest
+    # Optional per-joint gains (7 values - auto-duplicated for bilateral systems)
+    # per_joint_viscous_gains: [0.01, 0.01, 0.005, 0.02, 0.02, 0.005, 0.03]
+
+    # per_joint_viscous_gains: [
+    #   0.01, 0.025, 0.02, 0.03, 0.03, 0.03, 0.03, 
+    #   0.01, 0.025, 0.02, 0.025, 0.03, 0.03, 0.04
+    # ]
+    per_joint_viscous_gains: [
+      0.01, 0.025, 0.01, 0.02, 0.03, 0.03, 0.03, 
+      0.01, 0.025, 0.01, 0.02, 0.03, 0.03, 0.03
+    ]
+
+    # per_joint_coulomb_gains: [0.01, 0.02, 0.015, 0.01, 0.005, 0.005, 0.003]
+
+# Goal tracking configuration (for ENV_TO_GELLO and admittance modes)
+goal_tracking:
+  enable: true
+  # PID gains for current-based position tracking
+  # 7 values for single arm - automatically duplicated for bilateral systems.
+  kp: [0.9, 0.8, 0.4, 0.5, 0.2, 0.5, 0.4]  # Proportional gains per joint
+  ki: [0.05, 0.0, 0.0, 0.05, 0.0, 0.05, 0.0]  # Integral gains per joint (start conservative)
+  kd: [0.1, 0.05, 0.05, 0.05, 0.05, 0.01, 0.05]  # Derivative gains per joint
+  # Anti-windup settings
+  integral_limit: 0.5  # Max integral accumulation (radians)
+  reset_integral_on_goal_change: true  # Reset integral when goal changes significantly
+
+  # Velocity feedforward control (reduces tracking lag)
+  feedforward:
+    enable: true                              # Master enable/disable flag
+    kff: [0.1, 0.3, 0.3, 0.05, 0.05, 0.05, 0.05]  # Velocity feedforward gains per joint
+    velocity_filter_alpha: 0.3                # EMA smoothing for goal velocity (0-1, lower = smoother)
+
+# Admittance stiffness override (applied when entering admittance mode)
+# These override goal_tracking kp/ki/kd above for admittance-specific tuning.
+# Leave as null to use the goal_tracking defaults above.
+admittance_stiffness:
+  kp: null
+  ki: null
+  kd: null
+
+# Stiffness during human takeover/correction in admittance mode.
+# Softer gains so GELLO is easy to move during human correction.
+# When correction ends, reverts to admittance_stiffness (or goal_tracking defaults).
+# Leave as null for no switching (same gains always).
+takeover_stiffness:
+  # ~1/3 of goal_tracking kp so human feels much less resistance
+  kp: [0.1, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05]
+  # Zero integral during correction - don't accumulate error while human is pushing
+  ki: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  # ~1/2 of goal_tracking kd - some damping for stability, less resistance
+  kd: [0.01, 0.005, 0.005, 0.005, 0.005, 0.001, 0.001]
+
+# takeover_stiffness:
+#   kp: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+#   ki: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+#   kd: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  kff: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+# Momentum observer for external torque estimation
+# Uses generalized momentum observer (dynamics-based, no current loop dependency)
+momentum_observer:
+  enable: false
+  gain: 30.0                  # Observer bandwidth (rad/s). Higher = faster, noisier.
+  include_coriolis: true      # Full Coriolis matrix for accuracy during motion
+  leak_rate: 0.01             # Anti-drift for integral (prevents unbounded growth)
+
+# Capacitive touch sensor (ESP32-S3 + MPR121)
+# Enable when hardware is connected. See iiil/gello/capacitive_sensor/README.md for setup.
+touch_sensor:
+  enable: true                       # Set to true when hardware is connected
+  port: "/dev/ttyACM0"              # USB serial port (see scripts/99-touch-sensor.rules)
+  baudrate: 115200
+  num_channels: 1                    # Number of active MPR121 channels
+  reconnect_interval: 2.0            # Seconds between reconnection attempts
+  stale_timeout: 0.5                 # Seconds after which data is considered stale
+
+# Takeover detection (switches from ENV_TO_GELLO to GELLO_TO_ENV)
+takeover:
+  enable: false
+
+  # Touch sensor detection (set use_touch: true and disable current/position for touch-only mode)
+  use_touch: true                    # Enable capacitive touch detection
+  touch_release_cooldown: 0.3        # Seconds after touch release before returning to policy
+
+  # Current filtering (4-stage pipeline: median → spike clamp → butterworth → EMA)
+  current_filter:
+    ema_enable: true   # Extra smoothing on top of Butterworth
+    alpha: 0.1  # EMA smoothing factor (0-1): lower = more smoothing
+    spike_median_enable: true   # Apply median filter to remove isolated spikes
+    spike_median_window: 9  # Median filter window size (samples) - larger = more spike removal
+    spike_clamp_enable: true    # Clamp per-sample current jumps
+    spike_clamp_max: 30.0       # mA - max allowed current change per 10ms sample (tighter)
+    # Butterworth low-pass filter (better noise rejection than EMA)
+    butterworth_enable: true    # Enable 2nd-order Butterworth filter
+    butterworth_cutoff: 3     # Cutoff frequency in Hz (very aggressive - only passes slow signals)
+    butterworth_order: 2        # Filter order (2 recommended)
+
+  # Position filtering (3-stage pipeline: median → spike clamp → EMA)
+  position_filter:
+    ema_enable: false  # EMA (alpha) smoothing on/off
+    alpha: 0.3  # EMA smoothing factor (0-1)
+    spike_median_enable: false  # Apply median filter to remove isolated spikes
+    spike_median_window: 11  # Median filter window size (samples)
+    spike_clamp_enable: false  # Clamp per-sample position jumps
+    spike_clamp_max: 0.1  # rad - max allowed position change per 10ms sample
+
+  # Velocity filtering (3-stage pipeline: median → spike clamp → EMA)
+  velocity_filter:
+    ema_enable: false  # EMA (alpha) smoothing on/off
+    alpha: 0.3  # EMA smoothing factor (0-1)
+    spike_median_enable: false  # Apply median filter to remove isolated spikes
+    spike_median_window: 5  # Median filter window size (samples)
+    spike_clamp_enable: false  # Clamp per-sample velocity jumps
+    spike_clamp_max: 1.0  # rad/s - max allowed velocity change per 10ms sample
+
+  # Which detection methods to use
+  use_current: false
+  use_position: false
+  use_velocity: false
+  use_momentum: false           # Enable momentum observer-based detection
+
+  # Momentum threshold (Nm per joint, 14 joints: right arm 0-6, left arm 7-13)
+  # Proximal joints (higher inertia) need higher thresholds; distal joints are more sensitive
+  momentum_threshold: [0.5, 0.3, 0.2, 0.2, 0.1, 0.1, 0.1,
+                       0.5, 0.3, 0.2, 0.2, 0.1, 0.1, 0.1]
+
+  # Thresholds (14 joints: right arm 0-6, left arm 7-13)
+  # current_threshold: [77.6, 77.6, 48.5, 77.6, 77.6, 77.6, 48.5,   # right arm (mA)
+  #                     48.5, 48.5, 48.5, 48.5, 48.5, 77.6, 48.5]   # left arm (mA)
+  current_threshold: [6.3, 5.1, 5.0, 15.3, 5.0, 5.0, 5.0,   # right arm (mA)
+                      6.3, 5.6, 5.0, 11.6, 5.0, 5.0, 5.0]   # left arm (mA)
+  position_threshold: [0.25, 0.35, 0.15, 0.25, 0.15, 0.25, 0.25,      # right arm (rad)
+                       0.25, 0.35, 0.15, 0.25, 0.15, 0.25, 0.25]      # left arm (rad)
+  velocity_threshold: 0.3   # rad/s - velocity threshold
+
+  # Temporal filtering (sustained detection window)
+  window_size: 20  # frames (200ms at 100Hz)
+
+  # Auto-return (automatically resume tracking after release)
+  enable_auto_return: true
+  auto_return_timeout: 0.8  # seconds - wait time before auto-return
+  release_velocity: 0.05    # rad/s - velocity must be below this
+  release_current_derivative: 10.0  # mA - current std dev must be below this (stability check)
+  takeover_grace_period: 1  # seconds - ignore takeover right after auto-return to let tracking settle
+
+# Debug logging and visualization
+debug_logging:
+  enable: false  # Set to true to enable structured debug logging
+  log_to_file: true
+  log_directory: "logs/debug"
+  buffer_size: 10000  # samples (100 seconds at 100 Hz)
+  flush_interval: 10  # samples (flush every 0.1 seconds for real-time plotting)
+
+  # Signals to capture (all logged at 100 Hz)
+  signals:
+    - measured_currents
+    - tracking_currents
+    - gravity_currents
+    - friction_currents
+    - expected_currents
+    - current_diff
+    - filtered_current_diff
+    - position_error
+    - velocities
+    - goal_position
+    - current_position
+    - signed_position_error
+
+  # Real-time plotting configuration
+  plotting:
+    enable: false  # Set to true for real-time visualization
+    backend: "matplotlib"
+    update_rate: 10  # Hz (5-10 Hz recommended for matplotlib)
+    window_duration: 60.0  # seconds of data to display
+
+    # Y-axis limits by signal type (fixed limits prevent scale jumping)
+    y_limits:
+      currents: [-150, 150]  # mA - fixed range for all current plots
+      position_error: [-0.5, 0.5]  # radians
+      velocities: [-2.0, 2.0]  # rad/s
+
+# Notes:
+# - All servos home at 180° (encoder value 2048)
+# - Left arm mirrors right arm configuration
+# - Adjust multipliers and gains based on your specific hardware
+# - For single arm operation, remove the left arm motor groups
+#
+# Hardware Setup (Current Configuration):
+# - 2 USB ports with unique motor IDs per bus
+# - USB0 (/dev/ttyUSB0): High-power servos (XM430-W350-T)
+#   * Right arm: IDs 0-3 → Joints 0-3
+#   * Left arm:  IDs 4-7 → Joints 7-10
+# - USB1 (/dev/ttyUSB1): Low-power servos (XC330-M288-T)
+#   * Right arm: IDs 0-2 → Joints 4-6
+#   * Left arm:  IDs 3-5 → Joints 11-13
+# - All servos use 3Mbps baudrate for optimal performance
+#
+# Motor ID Assignment:
+# - Each Dynamixel bus (USB port) requires unique motor IDs
+# - Right and left arms share the same buses, so IDs cannot overlap
+# - This config uses contiguous IDs: right arm first, then left arm

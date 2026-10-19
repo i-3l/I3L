@@ -1,0 +1,20 @@
+# @package _global_
+
+task:
+  type: PickPlaceHardTask
+  name: ${task.type}
+  task_info_range: null
+  pcd_range: null
+  show_trajectory: false
+  n_objects: 2
+  randomize_initial_pose: true
+  randomize_robot_pose_prob: 0.0
+  randomize_trajectory_prob: 0.0
+  is_target_fixed: true
+  fixed_object_poses_path: null
+  save_object_poses_path: null
+  termination_config:
+    hold_step_threshold: 20
+    episode_timeout_step: 800
+    total_episode: 20
+    total_successful_episode: null

@@ -1,0 +1,14 @@
+# @package _global_
+
+task:
+  type: PickPlaceTask
+  name: ${task.type}
+  show_trajectory: false
+  n_objects: 1
+  randomize_initial_pose_prob: 0.0
+  is_target_fixed: false
+  termination_config:
+    hold_step_threshold: 20
+    episode_timeout_step: 300
+    total_episode: 1
+    total_successful_episode: null

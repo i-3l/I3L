@@ -1,0 +1,8 @@
+type: mahalanobis_detector
+calibration_path: null
+interrupt_threshold: 40.0
+release_threshold: 19.31
+window_size: 5
+interrupt_window: 3
+use_moving_average: true
+ma_window: 5

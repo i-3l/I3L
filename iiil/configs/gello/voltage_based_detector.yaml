@@ -1,0 +1,17 @@
+# Configuration for VoltageBasedDetector
+# This detector can work as both an interrupt detector and release detector
+# depending on the mode parameter
+
+# Mode: "interrupt" or "release"
+mode: "interrupt"
+
+# Voltage threshold configuration
+voltage_threshold: 0.015  # Voltage threshold for detection (float, adjust as needed)
+
+# For release mode: consecutive timesteps configuration
+consecutive_timesteps: 10  # Number of consecutive timesteps voltage must be below threshold (int, only used in release mode)
+
+# Serial port settings (should match your hardware setup)
+serial_port: "/dev/ttyACM0"  # Serial port device (string)
+baudrate: 115200  # Baud rate for serial communication (int)
+timeout: 1.0  # Serial read timeout in seconds (float) 

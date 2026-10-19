@@ -1,0 +1,12 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - override /robot: real_r1pro_iiil
+
+env:
+  env_type: real
+  cfg:
+    env:
+      frequency: 30  # Control frequency in Hz
+    head_stereo: true

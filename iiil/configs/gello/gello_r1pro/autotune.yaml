@@ -1,0 +1,30 @@
+# Autotune task overlay for gello_r1pro
+# Merged on top of gello_r1pro.yaml at load time.
+# Only contains tunable per-task parameters.
+
+goal_tracking:
+  kp: [0.9, 0.8, 0.4, 0.5, 0.2, 0.5, 0.4]
+  ki: [0.05, 0.0, 0.0, 0.05, 0.0, 0.05, 0.0]
+  kd: [0.1, 0.05, 0.05, 0.05, 0.05, 0.01, 0.05]
+
+admittance_stiffness:
+  kp: null
+  ki: null
+  kd: null
+
+# takeover_stiffness:
+#   kp: [0.3, 0.25, 0.15, 0.15, 0.08, 0.05, 0.05]
+#   ki: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+#   kd: [0.05, 0.025, 0.025, 0.025, 0.025, 0.005, 0.005]
+
+takeover_stiffness:
+  kp: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  ki: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  kd: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+takeover:
+  current_threshold: [9.0, 8.0, 8.7, 5.6, 5.0, 5.0, 5.0,   # right arm (mA)
+                      8.0, 10.4, 11.5, 7.2, 5.0, 5.6, 5.0]   # left arm (mA)
+  position_threshold: [0.25, 0.35, 0.15, 0.25, 0.15, 0.25, 0.25,      # right arm (rad)
+                       0.25, 0.35, 0.15, 0.25, 0.15, 0.25, 0.25]      # left arm (rad)
+  velocity_threshold: 0.3

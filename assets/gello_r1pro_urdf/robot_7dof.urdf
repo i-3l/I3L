@@ -1,0 +1,2516 @@
+<?xml version="1.0" ?>
+<!-- Generated using onshape-to-robot -->
+<!-- Coordinate transform: Rotate entire robot 90 degrees about Y axis -->
+<robot name="URDF">
+  <!-- Base link for coordinate transformation -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+
+  <!-- Fixed joint to rotate entire robot 270 degrees about Y axis (Z points down) -->
+  <joint name="base_to_link1" type="fixed">
+    <origin xyz="0 0 0" rpy="0 4.71239 0"/>
+    <parent link="base_link"/>
+    <child link="1"/>
+  </joint>
+
+  <!-- Link 1 -->
+  <link name="1">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <!-- Part 1 -->
+    <visual>
+      <origin xyz="-0.01405 -0.03525 0.0015" rpy="-1.5708 1.2322e-47 -6.12323e-17"/>
+      <geometry>
+        <mesh filename="meshes/1.stl"/>
+      </geometry>
+      <material name="1_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.01405 -0.03525 0.0015" rpy="-1.5708 1.2322e-47 -6.12323e-17"/>
+      <geometry>
+        <mesh filename="meshes/1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_cvr_cable_5 -->
+    <visual>
+      <origin xyz="5.00712e-17 -5e-05 0.0185" rpy="-2.75836e-16 1.75741e-33 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_cvr_cable_5.stl"/>
+      </geometry>
+      <material name="dc12_a01_cvr_cable_5_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="5.00712e-17 -5e-05 0.0185" rpy="-2.75836e-16 1.75741e-33 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_cvr_cable_5.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1 -->
+    <visual>
+      <origin xyz="0.011 0.008 0.0043" rpy="-1.5708 1.04083e-15 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.011 0.008 0.0043" rpy="-1.5708 1.04083e-15 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12 -->
+    <visual>
+      <origin xyz="-0.011 -0.032 0.0327" rpy="-2.75836e-16 1.75741e-33 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.011 -0.032 0.0327" rpy="-2.75836e-16 1.75741e-33 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_2 -->
+    <visual>
+      <origin xyz="-0.011 -0.032 0.0043" rpy="-1.5708 1.04083e-15 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_2_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.011 -0.032 0.0043" rpy="-1.5708 1.04083e-15 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_3 -->
+    <visual>
+      <origin xyz="0.011 0.008 0.0327" rpy="1.5708 -1.04083e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_3_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.011 0.008 0.0327" rpy="1.5708 -1.04083e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_4 -->
+    <visual>
+      <origin xyz="0.011 -0.032 0.0043" rpy="-1.5708 1.04083e-15 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_4_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.011 -0.032 0.0043" rpy="-1.5708 1.04083e-15 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_5 -->
+    <visual>
+      <origin xyz="-0.011 0.008 0.0043" rpy="-1.5708 1.04083e-15 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_5_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.011 0.008 0.0043" rpy="-1.5708 1.04083e-15 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_2 -->
+    <visual>
+      <origin xyz="0.011 0.008 0.0043" rpy="-3.14159 -1.75741e-33 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_2_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.011 0.008 0.0043" rpy="-3.14159 -1.75741e-33 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_6 -->
+    <visual>
+      <origin xyz="-0.011 -0.032 0.0327" rpy="1.5708 -1.04083e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_6_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.011 -0.032 0.0327" rpy="1.5708 -1.04083e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_3 -->
+    <visual>
+      <origin xyz="-0.011 0.008 0.0043" rpy="-3.14159 -1.75741e-33 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_3_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.011 0.008 0.0043" rpy="-3.14159 -1.75741e-33 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_4 -->
+    <visual>
+      <origin xyz="0.011 -0.032 0.0043" rpy="-3.14159 -1.75741e-33 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_4_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.011 -0.032 0.0043" rpy="-3.14159 -1.75741e-33 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_5 -->
+    <visual>
+      <origin xyz="-0.011 -0.032 0.0043" rpy="-3.14159 -1.75741e-33 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_5_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.011 -0.032 0.0043" rpy="-3.14159 -1.75741e-33 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_6 -->
+    <visual>
+      <origin xyz="0.011 0.008 0.0327" rpy="-2.75836e-16 1.75741e-33 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_6_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.011 0.008 0.0327" rpy="-2.75836e-16 1.75741e-33 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_7 -->
+    <visual>
+      <origin xyz="-0.011 0.008 0.0327" rpy="-2.75836e-16 1.75741e-33 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_7_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.011 0.008 0.0327" rpy="-2.75836e-16 1.75741e-33 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_7 -->
+    <visual>
+      <origin xyz="-0.011 0.008 0.0327" rpy="1.5708 -1.04083e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_7_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.011 0.008 0.0327" rpy="1.5708 -1.04083e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_8 -->
+    <visual>
+      <origin xyz="0.011 -0.032 0.0327" rpy="-2.75836e-16 1.75741e-33 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_8_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.011 -0.032 0.0327" rpy="-2.75836e-16 1.75741e-33 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_8 -->
+    <visual>
+      <origin xyz="0.011 -0.032 0.0327" rpy="1.5708 -1.04083e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_8_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.011 -0.032 0.0327" rpy="1.5708 -1.04083e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dummy_dc12 -->
+    <visual>
+      <origin xyz="5.72044e-17 1.02216e-15 0.0185" rpy="-2.75836e-16 1.75741e-33 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/dummy_dc12.stl"/>
+      </geometry>
+      <material name="dummy_dc12_material">
+        <color rgba="0.917647 0.917647 0.917647 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="5.72044e-17 1.02216e-15 0.0185" rpy="-2.75836e-16 1.75741e-33 -6.93889e-17"/>
+      <geometry>
+        <mesh filename="meshes/dummy_dc12.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link 2 -->
+  <link name="2">
+    <inertial>
+      <origin xyz="-0.000732021 0.000351695 0.0214241" rpy="0 0 0"/>
+      <mass value="0.11101"/>
+      <inertia ixx="6.55174e-05" ixy="-1.55607e-07" ixz="-9.31887e-06" iyy="6.81044e-05" iyz="-3.27748e-07" izz="2.42796e-05"/>
+    </inertial>
+    <!-- Part 2 -->
+    <visual>
+      <origin xyz="-7.271e-17 -1.01183e-15 -0.0377" rpy="2.61203e-15 -1.79076e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/2.stl"/>
+      </geometry>
+      <material name="2_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-7.271e-17 -1.01183e-15 -0.0377" rpy="2.61203e-15 -1.79076e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/2.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_cvr_cable_5_2 -->
+    <visual>
+      <origin xyz="0.000500009 4.1e-09 0.04105" rpy="1.5708 -1.79076e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_cvr_cable_5.stl"/>
+      </geometry>
+      <material name="dc12_a01_cvr_cable_5_2_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000500009 4.1e-09 0.04105" rpy="1.5708 -1.79076e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_cvr_cable_5.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_9 -->
+    <visual>
+      <origin xyz="-0.0105 -0.0142 0.0491" rpy="-5.01994e-15 -1.18234e-14 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_9_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0105 -0.0142 0.0491" rpy="-5.01994e-15 -1.18234e-14 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_9 -->
+    <visual>
+      <origin xyz="0.0115 0.0142 0.00910001" rpy="1.5708 -1.79076e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_9_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0115 0.0142 0.00910001" rpy="1.5708 -1.79076e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_10 -->
+    <visual>
+      <origin xyz="0.0115 -0.0142 0.00910001" rpy="-5.01994e-15 -1.18234e-14 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_10_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0115 -0.0142 0.00910001" rpy="-5.01994e-15 -1.18234e-14 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_11 -->
+    <visual>
+      <origin xyz="-0.0105 0.0142 0.0491" rpy="5.44862e-15 1.18011e-14 -6.63792e-14"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_11_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0105 0.0142 0.0491" rpy="5.44862e-15 1.18011e-14 -6.63792e-14"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_12 -->
+    <visual>
+      <origin xyz="-0.0105 -0.0142 0.00910001" rpy="-5.01994e-15 -1.18234e-14 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_12_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0105 -0.0142 0.00910001" rpy="-5.01994e-15 -1.18234e-14 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_13 -->
+    <visual>
+      <origin xyz="0.0115 -0.0142 0.0491" rpy="-5.01994e-15 -1.18234e-14 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_13_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0115 -0.0142 0.0491" rpy="-5.01994e-15 -1.18234e-14 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_10 -->
+    <visual>
+      <origin xyz="-0.0105 -0.0142 0.0491" rpy="1.5708 2.51917e-14 -8.40317e-14"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_10_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0105 -0.0142 0.0491" rpy="1.5708 2.51917e-14 -8.40317e-14"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_14 -->
+    <visual>
+      <origin xyz="0.0115 0.0142 0.00910001" rpy="5.44862e-15 1.18011e-14 -6.63792e-14"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_14_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0115 0.0142 0.00910001" rpy="5.44862e-15 1.18011e-14 -6.63792e-14"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_11 -->
+    <visual>
+      <origin xyz="0.0115 -0.0142 0.0491" rpy="1.5708 2.51917e-14 -8.40317e-14"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_11_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0115 -0.0142 0.0491" rpy="1.5708 2.51917e-14 -8.40317e-14"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_12 -->
+    <visual>
+      <origin xyz="-0.0105 -0.0142 0.00910001" rpy="1.5708 2.51917e-14 -8.40317e-14"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_12_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0105 -0.0142 0.00910001" rpy="1.5708 2.51917e-14 -8.40317e-14"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_13 -->
+    <visual>
+      <origin xyz="0.0115 -0.0142 0.00910001" rpy="1.5708 2.51917e-14 -8.40317e-14"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_13_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0115 -0.0142 0.00910001" rpy="1.5708 2.51917e-14 -8.40317e-14"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_14 -->
+    <visual>
+      <origin xyz="-0.0105 0.0142 0.0491" rpy="1.5708 -1.79076e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_14_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0105 0.0142 0.0491" rpy="1.5708 -1.79076e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_15 -->
+    <visual>
+      <origin xyz="0.0115 0.0142 0.0491" rpy="1.5708 -1.79076e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_15_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0115 0.0142 0.0491" rpy="1.5708 -1.79076e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_15 -->
+    <visual>
+      <origin xyz="0.0115 0.0142 0.0491" rpy="5.44862e-15 1.18011e-14 -6.63792e-14"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_15_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0115 0.0142 0.0491" rpy="5.44862e-15 1.18011e-14 -6.63792e-14"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_16 -->
+    <visual>
+      <origin xyz="-0.0105 0.0142 0.00910001" rpy="1.5708 -1.79076e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_16_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0105 0.0142 0.00910001" rpy="1.5708 -1.79076e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_16 -->
+    <visual>
+      <origin xyz="-0.0105 0.0142 0.00910001" rpy="5.44862e-15 1.18011e-14 -6.63792e-14"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_16_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0105 0.0142 0.00910001" rpy="5.44862e-15 1.18011e-14 -6.63792e-14"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dummy_dc12_2 -->
+    <visual>
+      <origin xyz="0.000500009 4.1e-09 0.0411" rpy="1.5708 -1.79076e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dummy_dc12.stl"/>
+      </geometry>
+      <material name="dummy_dc12_2_material">
+        <color rgba="0.917647 0.917647 0.917647 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000500009 4.1e-09 0.0411" rpy="1.5708 -1.79076e-15 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dummy_dc12.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link 3a -->
+  <link name="3a">
+    <inertial>
+      <origin xyz="0.0355028 -0.00794077 0.021" rpy="0 0 0"/>
+      <mass value="0.105388"/>
+      <inertia ixx="3.10763e-05" ixy="1.69948e-06" ixz="-2.32525e-12" iyy="3.29996e-05" iyz="-9.94046e-13" izz="3.88463e-05"/>
+    </inertial>
+    <!-- Part 3b -->
+    <visual>
+      <origin xyz="0.000500009 -0.0786 0.021" rpy="-1.5708 0.0363124 -7.635e-30"/>
+      <geometry>
+        <mesh filename="meshes/3b.stl"/>
+      </geometry>
+      <material name="3b_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000500009 -0.0786 0.021" rpy="-1.5708 0.0363124 -7.635e-30"/>
+      <geometry>
+        <mesh filename="meshes/3b.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part 3a -->
+    <visual>
+      <origin xyz="0.000500009 -0.0786 0.021" rpy="-1.5708 0.0363124 -2.25663e-17"/>
+      <geometry>
+        <mesh filename="meshes/3a.stl"/>
+      </geometry>
+      <material name="3a_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000500009 -0.0786 0.021" rpy="-1.5708 0.0363124 -2.25663e-17"/>
+      <geometry>
+        <mesh filename="meshes/3a.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_cvr_cable_5_3 -->
+    <visual>
+      <origin xyz="0.03833 0.00371069 0.021" rpy="-3.24491e-14 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_cvr_cable_5.stl"/>
+      </geometry>
+      <material name="dc12_a01_cvr_cable_5_3_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.03833 0.00371069 0.021" rpy="-3.24491e-14 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_cvr_cable_5.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_17 -->
+    <visual>
+      <origin xyz="0.02413 0.0117607 0.01" rpy="-1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_17_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.02413 0.0117607 0.01" rpy="-1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_17 -->
+    <visual>
+      <origin xyz="0.05253 -0.0282393 0.032" rpy="-3.24491e-14 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_17_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.05253 -0.0282393 0.032" rpy="-3.24491e-14 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_18 -->
+    <visual>
+      <origin xyz="0.02413 -0.0282393 0.032" rpy="-1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_18_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.02413 -0.0282393 0.032" rpy="-1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_19 -->
+    <visual>
+      <origin xyz="0.05253 0.0117607 0.01" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_19_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.05253 0.0117607 0.01" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_20 -->
+    <visual>
+      <origin xyz="0.02413 -0.0282393 0.01" rpy="-1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_20_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.02413 -0.0282393 0.01" rpy="-1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_21 -->
+    <visual>
+      <origin xyz="0.02413 0.0117607 0.032" rpy="-1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_21_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.02413 0.0117607 0.032" rpy="-1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_18 -->
+    <visual>
+      <origin xyz="0.02413 0.0117607 0.01" rpy="-5.69791e-13 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_18_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.02413 0.0117607 0.01" rpy="-5.69791e-13 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_22 -->
+    <visual>
+      <origin xyz="0.05253 -0.0282393 0.032" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_22_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.05253 -0.0282393 0.032" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_19 -->
+    <visual>
+      <origin xyz="0.02413 0.0117607 0.032" rpy="-5.69791e-13 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_19_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.02413 0.0117607 0.032" rpy="-5.69791e-13 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_20 -->
+    <visual>
+      <origin xyz="0.02413 -0.0282393 0.01" rpy="-5.69791e-13 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_20_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.02413 -0.0282393 0.01" rpy="-5.69791e-13 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_21 -->
+    <visual>
+      <origin xyz="0.02413 -0.0282393 0.032" rpy="-5.69791e-13 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_21_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.02413 -0.0282393 0.032" rpy="-5.69791e-13 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_22 -->
+    <visual>
+      <origin xyz="0.05253 0.0117607 0.01" rpy="-3.24491e-14 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_22_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.05253 0.0117607 0.01" rpy="-3.24491e-14 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_23 -->
+    <visual>
+      <origin xyz="0.05253 0.0117607 0.032" rpy="-3.24491e-14 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_23_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.05253 0.0117607 0.032" rpy="-3.24491e-14 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_23 -->
+    <visual>
+      <origin xyz="0.05253 0.0117607 0.032" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_23_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.05253 0.0117607 0.032" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_24 -->
+    <visual>
+      <origin xyz="0.05253 -0.0282393 0.01" rpy="-3.24491e-14 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_24_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.05253 -0.0282393 0.01" rpy="-3.24491e-14 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_24 -->
+    <visual>
+      <origin xyz="0.05253 -0.0282393 0.01" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_24_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.05253 -0.0282393 0.01" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dummy_dc12_3 -->
+    <visual>
+      <origin xyz="0.03833 0.00376069 0.021" rpy="-3.24491e-14 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dummy_dc12.stl"/>
+      </geometry>
+      <material name="dummy_dc12_3_material">
+        <color rgba="0.917647 0.917647 0.917647 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.03833 0.00376069 0.021" rpy="-3.24491e-14 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dummy_dc12.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link 4 -->
+  <link name="4">
+    <inertial>
+      <origin xyz="-0.00031185 -0.00131685 0.0753505" rpy="0 0 0"/>
+      <mass value="0.105868"/>
+      <inertia ixx="7.04656e-05" ixy="-7.65619e-09" ixz="2.76693e-07" iyy="7.18293e-05" iyz="1.52779e-06" izz="2.04603e-05"/>
+    </inertial>
+    <!-- Part 4 -->
+    <visual>
+      <origin xyz="-1.23e-08 0.0828607 -0.05933" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/4.stl"/>
+      </geometry>
+      <material name="4_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-1.23e-08 0.0828607 -0.05933" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/4.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_cvr_cable_5_4 -->
+    <visual>
+      <origin xyz="-1.23e-08 -0.00155 0.09445" rpy="1.5708 -8.32667e-17 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_cvr_cable_5.stl"/>
+      </geometry>
+      <material name="dc12_a01_cvr_cable_5_4_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-1.23e-08 -0.00155 0.09445" rpy="1.5708 -8.32667e-17 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_cvr_cable_5.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_25 -->
+    <visual>
+      <origin xyz="0.0142 -0.01255 0.1025" rpy="-2.59761e-13 -3.68011e-14 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_25_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0142 -0.01255 0.1025" rpy="-2.59761e-13 -3.68011e-14 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_25 -->
+    <visual>
+      <origin xyz="-0.0142 0.00945 0.0625" rpy="1.5708 -8.32667e-17 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_25_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0142 0.00945 0.0625" rpy="1.5708 -8.32667e-17 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_26 -->
+    <visual>
+      <origin xyz="0.0142 0.00945 0.0625" rpy="-2.59761e-13 -3.68011e-14 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_26_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0142 0.00945 0.0625" rpy="-2.59761e-13 -3.68011e-14 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_27 -->
+    <visual>
+      <origin xyz="-0.0142 -0.01255 0.1025" rpy="2.15477e-13 1.10311e-12 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_27_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0142 -0.01255 0.1025" rpy="2.15477e-13 1.10311e-12 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_28 -->
+    <visual>
+      <origin xyz="0.0142 -0.01255 0.0625" rpy="-2.59761e-13 -3.68011e-14 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_28_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0142 -0.01255 0.0625" rpy="-2.59761e-13 -3.68011e-14 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_29 -->
+    <visual>
+      <origin xyz="0.0142 0.00945 0.1025" rpy="-2.59761e-13 -3.68011e-14 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_29_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0142 0.00945 0.1025" rpy="-2.59761e-13 -3.68011e-14 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_26 -->
+    <visual>
+      <origin xyz="0.0142 -0.01255 0.1025" rpy="1.5708 5.28092e-13 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_26_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0142 -0.01255 0.1025" rpy="1.5708 5.28092e-13 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_30 -->
+    <visual>
+      <origin xyz="-0.0142 0.00945 0.0625" rpy="2.15477e-13 1.10311e-12 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_30_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0142 0.00945 0.0625" rpy="2.15477e-13 1.10311e-12 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_27 -->
+    <visual>
+      <origin xyz="0.0142 0.00945 0.1025" rpy="1.5708 5.28092e-13 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_27_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0142 0.00945 0.1025" rpy="1.5708 5.28092e-13 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_28 -->
+    <visual>
+      <origin xyz="0.0142 -0.01255 0.0625" rpy="1.5708 5.28092e-13 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_28_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0142 -0.01255 0.0625" rpy="1.5708 5.28092e-13 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_29 -->
+    <visual>
+      <origin xyz="0.0142 0.00945 0.0625" rpy="1.5708 5.28092e-13 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_29_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0142 0.00945 0.0625" rpy="1.5708 5.28092e-13 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_30 -->
+    <visual>
+      <origin xyz="-0.0142 -0.01255 0.1025" rpy="1.5708 -8.32667e-17 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_30_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0142 -0.01255 0.1025" rpy="1.5708 -8.32667e-17 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_31 -->
+    <visual>
+      <origin xyz="-0.0142 0.00945 0.1025" rpy="1.5708 -8.32667e-17 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_31_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0142 0.00945 0.1025" rpy="1.5708 -8.32667e-17 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_31 -->
+    <visual>
+      <origin xyz="-0.0142 0.00945 0.1025" rpy="2.15477e-13 1.10311e-12 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_31_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0142 0.00945 0.1025" rpy="2.15477e-13 1.10311e-12 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part wbh_m2_5x12_32 -->
+    <visual>
+      <origin xyz="-0.0142 -0.01255 0.0625" rpy="1.5708 -8.32667e-17 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+      <material name="wbh_m2_5x12_32_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0142 -0.01255 0.0625" rpy="1.5708 -8.32667e-17 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/wbh_m2_5x12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc12_a01_spacer_ring_1_32 -->
+    <visual>
+      <origin xyz="-0.0142 -0.01255 0.0625" rpy="2.15477e-13 1.10311e-12 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+      <material name="dc12_a01_spacer_ring_1_32_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0142 -0.01255 0.0625" rpy="2.15477e-13 1.10311e-12 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dc12_a01_spacer_ring_1.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dummy_dc12_4 -->
+    <visual>
+      <origin xyz="-1.23e-08 -0.00155 0.0945" rpy="1.5708 -8.32667e-17 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dummy_dc12.stl"/>
+      </geometry>
+      <material name="dummy_dc12_4_material">
+        <color rgba="0.917647 0.917647 0.917647 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-1.23e-08 -0.00155 0.0945" rpy="1.5708 -8.32667e-17 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/dummy_dc12.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link 5 -->
+  <link name="5">
+    <inertial>
+      <origin xyz="0.0234702 -0.00149837 0.0193023" rpy="0 0 0"/>
+      <mass value="0.0439815"/>
+      <inertia ixx="1.46983e-05" ixy="5.10536e-06" ixz="-1.77942e-09" iyy="1.7092e-05" iyz="9.79825e-12" izz="2.10957e-05"/>
+    </inertial>
+    <!-- Part 5 -->
+    <visual>
+      <origin xyz="-0.15353 -0.0841107 0.0193" rpy="-1.5708 -6.32827e-15 5.12187e-29"/>
+      <geometry>
+        <mesh filename="meshes/5.stl"/>
+      </geometry>
+      <material name="5_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.15353 -0.0841107 0.0193" rpy="-1.5708 -6.32827e-15 5.12187e-29"/>
+      <geometry>
+        <mesh filename="meshes/5.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part phs_1_7x20_5_dc10 -->
+    <visual>
+      <origin xyz="0.0455 0.0079 0.0242" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+      <material name="phs_1_7x20_5_dc10_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0455 0.0079 0.0242" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part bts2_m2_6x8 -->
+    <visual>
+      <origin xyz="0.0228 -0.015 0.0193" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/bts2_m2_6x8.stl"/>
+      </geometry>
+      <material name="bts2_m2_6x8_material">
+        <color rgba="0.498039 0.498039 0.498039 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0228 -0.015 0.0193" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/bts2_m2_6x8.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_idle_cap_dummy -->
+    <visual>
+      <origin xyz="0.0212 -0.015 0.0193" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_idle_cap_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_idle_cap_dummy_material">
+        <color rgba="0.980392 0.713725 0.00392157 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0212 -0.015 0.0193" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_idle_cap_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part b3b_eh -->
+    <visual>
+      <origin xyz="0.0331 -0.006 0.027" rpy="2.11553e-13 1.73001e-14 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/b3b_eh.stl"/>
+      </geometry>
+      <material name="b3b_eh_material">
+        <color rgba="0.768627 0.886275 0.952941 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0331 -0.006 0.027" rpy="2.11553e-13 1.73001e-14 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/b3b_eh.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_case_f_dummy -->
+    <visual>
+      <origin xyz="0.0435 -0.015 0.0193" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_f_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_case_f_dummy_material">
+        <color rgba="0.498039 0.498039 0.498039 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0435 -0.015 0.0193" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_f_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part phs_1_7x20_5_dc10_2 -->
+    <visual>
+      <origin xyz="0.0455 0.0044 0.0109" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+      <material name="phs_1_7x20_5_dc10_2_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0455 0.0044 0.0109" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_case_m_dummy -->
+    <visual>
+      <origin xyz="0.0435 -0.015 0.0193" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_m_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_case_m_dummy_material">
+        <color rgba="0.980392 0.713725 0.00392157 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0435 -0.015 0.0193" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_m_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part phs_1_7x20_5_dc10_3 -->
+    <visual>
+      <origin xyz="0.0455 -0.0195 0.0109" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+      <material name="phs_1_7x20_5_dc10_3_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0455 -0.0195 0.0109" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_horn_dummy -->
+    <visual>
+      <origin xyz="0.0471 -0.015 0.0193" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_horn_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_horn_dummy_material">
+        <color rgba="0.768627 0.886275 0.952941 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0471 -0.015 0.0193" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_horn_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part bts2_m2_6x8_2 -->
+    <visual>
+      <origin xyz="0.0484 -0.015 0.0193" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/bts2_m2_6x8.stl"/>
+      </geometry>
+      <material name="bts2_m2_6x8_2_material">
+        <color rgba="0.498039 0.498039 0.498039 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0484 -0.015 0.0193" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/bts2_m2_6x8.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part phs_1_7x20_5_dc10_4 -->
+    <visual>
+      <origin xyz="0.0455 -0.0195 0.0277" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+      <material name="phs_1_7x20_5_dc10_4_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0455 -0.0195 0.0277" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_case_b_dummy -->
+    <visual>
+      <origin xyz="0.024 -0.015 0.0193" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_b_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_case_b_dummy_material">
+        <color rgba="0.972549 0.529412 0.00392157 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.024 -0.015 0.0193" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_b_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part b3b_eh_2 -->
+    <visual>
+      <origin xyz="0.0331 -0.006 0.0116" rpy="3.14159 -2.09915e-14 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/b3b_eh.stl"/>
+      </geometry>
+      <material name="b3b_eh_2_material">
+        <color rgba="0.768627 0.886275 0.952941 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0331 -0.006 0.0116" rpy="3.14159 -2.09915e-14 -1.5708"/>
+      <geometry>
+        <mesh filename="meshes/b3b_eh.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_led_cap2_dummy -->
+    <visual>
+      <origin xyz="0.0259 -0.0225 0.0193" rpy="3.14159 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_led_cap2_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_led_cap2_dummy_material">
+        <color rgba="0.917647 0.917647 0.917647 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0259 -0.0225 0.0193" rpy="3.14159 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_led_cap2_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_horn_idle2_dummy -->
+    <visual>
+      <origin xyz="0.0239 -0.015 0.0193" rpy="4.74266e-14 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_horn_idle2_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_horn_idle2_dummy_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0239 -0.015 0.0193" rpy="4.74266e-14 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_horn_idle2_dummy.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link 6 -->
+  <link name="6">
+    <inertial>
+      <origin xyz="-0.00103819 0.00171559 0.0403836" rpy="0 0 0"/>
+      <mass value="0.0366278"/>
+      <inertia ixx="1.63787e-05" ixy="-3.62234e-08" ixz="-8.74181e-07" iyy="1.63913e-05" iyz="-5.42471e-07" izz="4.85226e-06"/>
+    </inertial>
+    <!-- Part 6 -->
+    <visual>
+      <origin xyz="0.0820607 -0.01345 -0.20233" rpy="-1.5708 -1.534 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/6.stl"/>
+      </geometry>
+      <material name="6_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0820607 -0.01345 -0.20233" rpy="-1.5708 -1.534 1.5708"/>
+      <geometry>
+        <mesh filename="meshes/6.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part k20430001 -->
+    <visual>
+      <origin xyz="-0.0162775 0.032 0.00729818" rpy="-3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/k20430001.stl"/>
+      </geometry>
+      <material name="k20430001_material">
+        <color rgba="0.6 0.6 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0162775 0.032 0.00729818" rpy="-3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/k20430001.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part lcd_nfp190b -->
+    <visual>
+      <origin xyz="-0.0207775 -0.0027625 0.0201982" rpy="3.14159 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/lcd_nfp190b.stl"/>
+      </geometry>
+      <material name="lcd_nfp190b_material">
+        <color rgba="0.498039 0.498039 0.498039 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0207775 -0.0027625 0.0201982" rpy="3.14159 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/lcd_nfp190b.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part t_display_s3 -->
+    <visual>
+      <origin xyz="-0.0159275 0.0307822 0.0201982" rpy="-3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/t_display_s3.stl"/>
+      </geometry>
+      <material name="t_display_s3_material">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0159275 0.0307822 0.0201982" rpy="-3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/t_display_s3.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part phs_1_7x20_5_dc10_5 -->
+    <visual>
+      <origin xyz="-0.0049 0.012 0.0366" rpy="-7.51007e-14 -1.26565e-14 2.15378e-13"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+      <material name="phs_1_7x20_5_dc10_5_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0049 0.012 0.0366" rpy="-7.51007e-14 -1.26565e-14 2.15378e-13"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part bts2_m2_6x8_3 -->
+    <visual>
+      <origin xyz="1.24033e-15 -0.0107 0.0595" rpy="4.7692e-14 -1.51545e-14 -3.14159"/>
+      <geometry>
+        <mesh filename="meshes/bts2_m2_6x8.stl"/>
+      </geometry>
+      <material name="bts2_m2_6x8_3_material">
+        <color rgba="0.498039 0.498039 0.498039 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="1.24033e-15 -0.0107 0.0595" rpy="4.7692e-14 -1.51545e-14 -3.14159"/>
+      <geometry>
+        <mesh filename="meshes/bts2_m2_6x8.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_idle_cap_dummy_2 -->
+    <visual>
+      <origin xyz="-1.07379e-15 -0.0123 0.0595" rpy="4.7692e-14 -1.51545e-14 -3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_idle_cap_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_idle_cap_dummy_2_material">
+        <color rgba="0.980392 0.713725 0.00392157 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-1.07379e-15 -0.0123 0.0595" rpy="4.7692e-14 -1.51545e-14 -3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_idle_cap_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part b3b_eh_3 -->
+    <visual>
+      <origin xyz="-0.0077 -0.0004 0.0505" rpy="3.14159 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/b3b_eh.stl"/>
+      </geometry>
+      <material name="b3b_eh_3_material">
+        <color rgba="0.768627 0.886275 0.952941 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0077 -0.0004 0.0505" rpy="3.14159 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/b3b_eh.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_case_f_dummy_2 -->
+    <visual>
+      <origin xyz="-3.492e-15 0.01 0.0595" rpy="1.5708 -5.4956e-15 -3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_f_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_case_f_dummy_2_material">
+        <color rgba="0.498039 0.498039 0.498039 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-3.492e-15 0.01 0.0595" rpy="1.5708 -5.4956e-15 -3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_f_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part phs_1_7x20_5_dc10_6 -->
+    <visual>
+      <origin xyz="0.0084 0.012 0.0401" rpy="-7.51007e-14 -1.26565e-14 2.15378e-13"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+      <material name="phs_1_7x20_5_dc10_6_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0084 0.012 0.0401" rpy="-7.51007e-14 -1.26565e-14 2.15378e-13"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_case_m_dummy_2 -->
+    <visual>
+      <origin xyz="-3.492e-15 0.01 0.0595" rpy="1.5708 -5.4956e-15 -3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_m_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_case_m_dummy_2_material">
+        <color rgba="0.980392 0.713725 0.00392157 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-3.492e-15 0.01 0.0595" rpy="1.5708 -5.4956e-15 -3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_m_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part phs_1_7x20_5_dc10_7 -->
+    <visual>
+      <origin xyz="0.0084 0.012 0.064" rpy="-7.51007e-14 -1.26565e-14 2.15378e-13"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+      <material name="phs_1_7x20_5_dc10_7_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0084 0.012 0.064" rpy="-7.51007e-14 -1.26565e-14 2.15378e-13"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_horn_dummy_2 -->
+    <visual>
+      <origin xyz="-3.25261e-15 0.0136 0.0595" rpy="-7.51007e-14 -1.26565e-14 2.15378e-13"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_horn_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_horn_dummy_2_material">
+        <color rgba="0.768627 0.886275 0.952941 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-3.25261e-15 0.0136 0.0595" rpy="-7.51007e-14 -1.26565e-14 2.15378e-13"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_horn_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part bts2_m2_6x8_4 -->
+    <visual>
+      <origin xyz="-2.89872e-15 0.0149 0.0595" rpy="-7.51007e-14 -1.26565e-14 2.15378e-13"/>
+      <geometry>
+        <mesh filename="meshes/bts2_m2_6x8.stl"/>
+      </geometry>
+      <material name="bts2_m2_6x8_4_material">
+        <color rgba="0.498039 0.498039 0.498039 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-2.89872e-15 0.0149 0.0595" rpy="-7.51007e-14 -1.26565e-14 2.15378e-13"/>
+      <geometry>
+        <mesh filename="meshes/bts2_m2_6x8.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part phs_1_7x20_5_dc10_8 -->
+    <visual>
+      <origin xyz="-0.0084 0.012 0.064" rpy="-7.51007e-14 -1.26565e-14 2.15378e-13"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+      <material name="phs_1_7x20_5_dc10_8_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0084 0.012 0.064" rpy="-7.51007e-14 -1.26565e-14 2.15378e-13"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_case_b_dummy_2 -->
+    <visual>
+      <origin xyz="3.22659e-16 -0.0095 0.0595" rpy="1.5708 -5.4956e-15 -3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_b_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_case_b_dummy_2_material">
+        <color rgba="0.972549 0.529412 0.00392157 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="3.22659e-16 -0.0095 0.0595" rpy="1.5708 -5.4956e-15 -3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_b_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part b3b_eh_4 -->
+    <visual>
+      <origin xyz="0.0077 -0.0004 0.0505" rpy="-3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/b3b_eh.stl"/>
+      </geometry>
+      <material name="b3b_eh_4_material">
+        <color rgba="0.768627 0.886275 0.952941 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0077 -0.0004 0.0505" rpy="-3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/b3b_eh.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_led_cap2_dummy_2 -->
+    <visual>
+      <origin xyz="-2.39392e-16 -0.0076 0.067" rpy="1.5708 -4.67959e-14 1.69637e-13"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_led_cap2_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_led_cap2_dummy_2_material">
+        <color rgba="0.917647 0.917647 0.917647 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-2.39392e-16 -0.0076 0.067" rpy="1.5708 -4.67959e-14 1.69637e-13"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_led_cap2_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_horn_idle2_dummy_2 -->
+    <visual>
+      <origin xyz="7.11237e-16 -0.0096 0.0595" rpy="-1.5708 -9.20375e-14 -3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_horn_idle2_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_horn_idle2_dummy_2_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="7.11237e-16 -0.0096 0.0595" rpy="-1.5708 -9.20375e-14 -3.14159"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_horn_idle2_dummy.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link 7 -->
+  <link name="7">
+    <inertial>
+      <origin xyz="0.0323783 0.00553192 -0.0156018" rpy="0 0 0"/>
+      <mass value="0.0396865"/>
+      <inertia ixx="6.47427e-06" ixy="-1.14122e-06" ixz="8.76887e-10" iyy="1.32567e-05" iyz="-2.59749e-09" izz="1.38673e-05"/>
+    </inertial>
+    <!-- Part 7 -->
+    <visual>
+      <origin xyz="-0.26183 0.01345 0.0681607" rpy="3.14159 2.9976e-14 1.99864e-29"/>
+      <geometry>
+        <mesh filename="meshes/7.stl"/>
+      </geometry>
+      <material name="7_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.26183 0.01345 0.0681607" rpy="3.14159 2.9976e-14 1.99864e-29"/>
+      <geometry>
+        <mesh filename="meshes/7.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part phs_1_7x20_5_dc10_9 -->
+    <visual>
+      <origin xyz="0.0244 0.0195 -0.0107" rpy="1.34336e-13 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+      <material name="phs_1_7x20_5_dc10_9_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0244 0.0195 -0.0107" rpy="1.34336e-13 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part bts2_m2_6x8_5 -->
+    <visual>
+      <origin xyz="0.0473 -0.0032 -0.0156" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/bts2_m2_6x8.stl"/>
+      </geometry>
+      <material name="bts2_m2_6x8_5_material">
+        <color rgba="0.498039 0.498039 0.498039 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0473 -0.0032 -0.0156" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/bts2_m2_6x8.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_idle_cap_dummy_3 -->
+    <visual>
+      <origin xyz="0.0473 -0.0048 -0.0156" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_idle_cap_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_idle_cap_dummy_3_material">
+        <color rgba="0.980392 0.713725 0.00392157 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0473 -0.0048 -0.0156" rpy="3.14159 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_idle_cap_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part b3b_eh_5 -->
+    <visual>
+      <origin xyz="0.0383 0.0071 -0.0079" rpy="1.24165e-13 1.33292e-13 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/b3b_eh.stl"/>
+      </geometry>
+      <material name="b3b_eh_5_material">
+        <color rgba="0.768627 0.886275 0.952941 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0383 0.0071 -0.0079" rpy="1.24165e-13 1.33292e-13 3.14159"/>
+      <geometry>
+        <mesh filename="meshes/b3b_eh.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_case_f_dummy_3 -->
+    <visual>
+      <origin xyz="0.0473 0.0175 -0.0156" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_f_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_case_f_dummy_3_material">
+        <color rgba="0.498039 0.498039 0.498039 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0473 0.0175 -0.0156" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_f_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part phs_1_7x20_5_dc10_10 -->
+    <visual>
+      <origin xyz="0.0279 0.0195 -0.024" rpy="1.34336e-13 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+      <material name="phs_1_7x20_5_dc10_10_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0279 0.0195 -0.024" rpy="1.34336e-13 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_case_m_dummy_3 -->
+    <visual>
+      <origin xyz="0.0473 0.0175 -0.0156" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_m_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_case_m_dummy_3_material">
+        <color rgba="0.980392 0.713725 0.00392157 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0473 0.0175 -0.0156" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_m_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part phs_1_7x20_5_dc10_11 -->
+    <visual>
+      <origin xyz="0.0518 0.0195 -0.024" rpy="1.34336e-13 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+      <material name="phs_1_7x20_5_dc10_11_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0518 0.0195 -0.024" rpy="1.34336e-13 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_horn_dummy_3 -->
+    <visual>
+      <origin xyz="0.0473 0.0211 -0.0156" rpy="1.34336e-13 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_horn_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_horn_dummy_3_material">
+        <color rgba="0.768627 0.886275 0.952941 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0473 0.0211 -0.0156" rpy="1.34336e-13 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_horn_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part bts2_m2_6x8_6 -->
+    <visual>
+      <origin xyz="0.0473 0.0224 -0.0156" rpy="1.34336e-13 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/bts2_m2_6x8.stl"/>
+      </geometry>
+      <material name="bts2_m2_6x8_6_material">
+        <color rgba="0.498039 0.498039 0.498039 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0473 0.0224 -0.0156" rpy="1.34336e-13 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/bts2_m2_6x8.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part phs_1_7x20_5_dc10_12 -->
+    <visual>
+      <origin xyz="0.0518 0.0195 -0.0072" rpy="1.34336e-13 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+      <material name="phs_1_7x20_5_dc10_12_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0518 0.0195 -0.0072" rpy="1.34336e-13 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/phs_1_7x20_5_dc10.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_case_b_dummy_3 -->
+    <visual>
+      <origin xyz="0.0473 -0.002 -0.0156" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_b_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_case_b_dummy_3_material">
+        <color rgba="0.972549 0.529412 0.00392157 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0473 -0.002 -0.0156" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_case_b_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part b3b_eh_6 -->
+    <visual>
+      <origin xyz="0.0383 0.0071 -0.0233" rpy="3.14159 -1.2434e-13 -1.65588e-13"/>
+      <geometry>
+        <mesh filename="meshes/b3b_eh.stl"/>
+      </geometry>
+      <material name="b3b_eh_6_material">
+        <color rgba="0.768627 0.886275 0.952941 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0383 0.0071 -0.0233" rpy="3.14159 -1.2434e-13 -1.65588e-13"/>
+      <geometry>
+        <mesh filename="meshes/b3b_eh.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_led_cap2_dummy_3 -->
+    <visual>
+      <origin xyz="0.0548 -0.0001 -0.0156" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_led_cap2_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_led_cap2_dummy_3_material">
+        <color rgba="0.917647 0.917647 0.917647 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0548 -0.0001 -0.0156" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_led_cap2_dummy.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part dc15_a01_horn_idle2_dummy_3 -->
+    <visual>
+      <origin xyz="0.0473 -0.0021 -0.0156" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_horn_idle2_dummy.stl"/>
+      </geometry>
+      <material name="dc15_a01_horn_idle2_dummy_3_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0473 -0.0021 -0.0156" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="meshes/dc15_a01_horn_idle2_dummy.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link 8 -->
+  <link name="8">
+    <inertial>
+      <origin xyz="-0.0469355 0.013032 -0.0541045" rpy="0 0 0"/>
+      <mass value="0.0656738"/>
+      <inertia ixx="7.59073e-05" ixy="1.81816e-06" ixz="-6.93501e-06" iyy="7.34997e-05" iyz="5.49815e-06" izz="1.41918e-05"/>
+    </inertial>
+    <!-- Part 8 -->
+    <visual>
+      <origin xyz="0.30913 0.0733393 -0.03945" rpy="1.5708 -4.16793e-14 0"/>
+      <geometry>
+        <mesh filename="meshes/8.stl"/>
+      </geometry>
+      <material name="8_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.30913 0.0733393 -0.03945" rpy="1.5708 -4.16793e-14 0"/>
+      <geometry>
+        <mesh filename="meshes/8.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_2 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__2.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_2_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__2.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_3 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__3.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_3_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__3.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_4 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__4.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_4_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__4.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_5 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__5.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_5_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__5.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_6 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__6.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_6_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__6.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_7 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__7.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_7_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__7.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_8 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__8.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_8_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__8.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_9 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__9.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_9_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__9.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_10 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__10.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_10_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__10.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_11 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__11.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_11_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__11.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_12 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__12.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_12_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__12.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_13 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__13.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_13_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__13.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_14 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__14.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_14_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__14.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_15 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__15.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_15_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__15.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_16 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__16.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_16_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__16.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_17 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__17.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_17_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__17.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_18 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__18.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_18_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__18.stl"/>
+      </geometry>
+    </collision>
+    <!-- Part switch_control_r_updated_19 -->
+    <visual>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__19.stl"/>
+      </geometry>
+      <material name="switch_control_r_updated_19_material">
+        <color rgba="0.792157 0.819608 0.933333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.04915 -0.08415 -0.112" rpy="1.35559e-29 -4.16362e-27 -1.87263e-15"/>
+      <geometry>
+        <mesh filename="meshes/switch_control_r_updated__19.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from 7 to 8 -->
+  <joint name="6" type="revolute">
+    <origin xyz="0.0473 0.026 -0.0156" rpy="1.5708 3.18891e-14 3.14159"/>
+    <parent link="7"/>
+    <child link="8"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-1.5708" upper="1.5708"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from 6 to 7 -->
+  <joint name="5" type="revolute">
+    <origin xyz="-4.08701e-15 0.0174 0.0595" rpy="-1.5708 -1.5708 0"/>
+    <parent link="6"/>
+    <child link="7"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-1.5708" upper="1.5708"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from 5 to 6 -->
+  <joint name="4" type="revolute">
+    <origin xyz="0.049 -0.015 0.0193" rpy="-1.5708 -2.3726e-13 -1.5708"/>
+    <parent link="5"/>
+    <child link="6"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-3.14159" upper="1.5708"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from 4 to 5 -->
+  <joint name="3" type="revolute">
+    <origin xyz="-0.019 -0.00155 0.0945" rpy="-3.14159 -1.5708 0"/>
+    <parent link="4"/>
+    <child link="5"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-1.5708" upper="0"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from 3a to 4 -->
+  <joint name="2" type="revolute">
+    <origin xyz="0.05933 0.00376069 0.021" rpy="-1.5708 -5.23746e-15 -1.5708"/>
+    <parent link="3a"/>
+    <child link="4"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-6.28319" upper="0"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from 2 to 3a -->
+  <joint name="1" type="revolute">
+    <origin xyz="0.000500009 0.021 0.0411" rpy="-1.5708 -3.42399e-14 3.14159"/>
+    <parent link="2"/>
+    <child link="3a"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-3.14159" upper="0.349066"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+  <!-- Joint from 1 to 2 -->
+  <joint name="0" type="revolute">
+    <origin xyz="5.72072e-17 1.02743e-15 0.0375" rpy="-2.75836e-16 1.75741e-33 -6.93889e-17"/>
+    <parent link="1"/>
+    <child link="2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="6" lower="-3.14159" upper="0"/>
+    <joint_properties friction="0.5"/>
+  </joint>
+</robot>

@@ -1,0 +1,5 @@
+type: keyboard_interrupt_detector
+
+interrupt_key: "["
+release_key: "]"
+discard_key: "\\"

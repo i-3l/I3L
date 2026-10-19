@@ -1,0 +1,63 @@
+type: gello
+control_type: joint
+robot_type: ${robot.type}
+
+# Toggle JoyCon requirement; set to false to run headless (no button/gripper inputs)
+require_joycon: true
+
+# Gello hardware configuration file.
+# Leave as null to auto-select based on robot type (A1 -> gello_a1, R1Pro -> gello_r1pro).
+# Options if overriding: "gello_a1" (A1), "gello_r1pro" (R1Pro)
+gello_config: null
+gello_task_overlay: null    # Auto-detected from task type (e.g., OpenTask -> "open"). Set explicitly to override.
+
+# Enable verbose logging of control inputs/outputs
+log_control_signals: false
+
+# Verbose mode - inherit from top-level config
+verbose: ${verbose}
+
+# Base policy that generates target actions
+base_policy: il
+
+# Control direction: how does control flow?
+# Options: "gello_to_env", "env_to_gello", "admittance"
+
+# admittance mode (default):
+#   - Policy sends targets to GELLO as goals (low stiffness tracking)
+#   - GELLO tracks toward policy goal, but human can freely push/guide
+#   - Robot follows GELLO's actual position (includes human corrections)
+control_direction: admittance
+
+# Admittance mode configuration
+admittance:
+  # Position control switching: when true (default), modes switch between position
+  # and current control on the Dynamixel driver. When false, the driver stays in
+  # current control throughout (useful for debugging or if position mode causes issues).
+  use_position_control: true
+
+  # Gating: when enabled, uses threshold detection to gate between policy and gello
+  # When disabled (default): robot always follows GELLO actual position
+  gating:
+    enabled: true  # No gating - robot always follows GELLO (human corrections always pass through)
+    replan_on_release: true  # Reset policy when human releases (if gating enabled)
+    predict_during_correction: true  # If true, policy keeps predicting during correction (not frozen)
+    takeover_transition_duration: 2.0  # Seconds to blend from policy to gello on takeover (0.0 = instant)
+
+# Runtime stiffness overrides for admittance mode.
+# Resolution order: policy config (here) > gello hardware config > goal_tracking defaults.
+# Normally set these in gello_r1pro.yaml / gello_a1.yaml.
+# Only set here to override per-run (e.g., from command line).
+admittance_stiffness:
+  kp: null
+  ki: null
+  kd: null
+
+takeover_stiffness:
+  kp: null
+  ki: null
+  kd: null
+
+# Override gello hardware config's takeover.enable.
+# null = use hardware config default, true/false = override.
+takeover_enable: null

@@ -1,0 +1,17 @@
+# @package _global_
+
+mode: collection
+
+task:
+  type: PourTask
+  name: ${task.type}
+  show_trajectory: false
+  n_objects: 1
+  randomize_robot_pose_prob: 1.0
+  randomize_initial_pose_prob: 1.0
+  is_target_fixed: false
+  termination_config:
+    hold_step_threshold: 20
+    episode_timeout_step: 900
+    total_episode: 260
+    total_successful_episode: null

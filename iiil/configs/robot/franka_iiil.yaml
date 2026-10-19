@@ -1,0 +1,14 @@
+type: RealFranka
+action_keys: [arm, gripper]
+action_dim: 8
+action_key_dims:
+  arm: 7
+  gripper: 1
+multi_view_cameras:
+  wrist:
+    name: robot::robot:zed_wrist:Camera:0
+    resolution: [240, 240]
+  external:
+    name: robot::robot:zed_external:Camera:0
+    resolution: [240, 240]
+controllers:  # Empty - real robot, no OmniGibson controllers

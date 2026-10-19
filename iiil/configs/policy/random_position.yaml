@@ -1,0 +1,12 @@
+# Random Position Policy Configuration
+type: random_position
+control_type: ik
+robot_type: ${robot.type}
+cube_bounds:
+  - [0.3, 0.7]   # x_min, x_max
+  - [-0.2, 0.2]  # y_min, y_max
+  - [0.2, 0.4]   # z_min, z_max
+velocity_lower_bound: 0.1
+velocity_upper_bound: 0.9
+random_velocity: true
+waypoint_reached_threshold: 0.01

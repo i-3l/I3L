@@ -1,0 +1,24 @@
+# @package _global_
+
+mode: collection
+
+# Rate limiting - enforce target Hz from env config (default: 30Hz)
+# Set to true for consistent timing in recorded data
+# Set to false for lowest latency teleoperation
+enforce_frequency: true
+
+task:
+  type: EmptyTask
+  name: ${task.type}
+  show_trajectory: false
+  n_objects: 1
+  randomize_initial_pose: true
+  randomize_robot_pose_prob: 0.0
+  is_target_fixed: false
+  termination_config:
+    hold_step_threshold: 20
+    # No auto-timeout - episode ends only via A (accept) or Y (reject) buttons
+    episode_timeout_step: null
+    # No episode limit - block ends only via Plus (+) button
+    total_episode: null
+    total_successful_episode: null

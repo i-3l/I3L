@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="full_gello_assembly">
+    <link name="base_link">
+        <inertial>
+            <origin xyz="8.911122943956872e-07 -0.011837831089419675 -0.003443399432013946" rpy="0.0 0.0 0.0" />
+            <mass value="0.5355088410811588" />
+            <inertia ixx="0.00018950265480252663" iyy="0.0001373564789721666" izz="0.0001920847976815078" ixy="5.096381618953383e-09" iyz="-1.2645871205122656e-06" ixz="3.4236866755339467e-09" />
+        </inertial>
+        <visual name="base_link_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/base_link.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="red">
+                <color rgba="1. 0. 0. 1."/>
+            </material>
+        </visual>
+        <collision name="base_link_collision">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/base_link.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="upper_arm_single_body-v1">
+        <inertial>
+            <origin xyz="0.00033326073372054335 -0.011349096810954364 0.022452748370503834" rpy="0.0 -0.0 0.0" />
+            <mass value="0.109" />
+            <inertia ixx="0.00019472525666164526" iyy="0.00011334045114298134" izz="0.00021684289769205526" ixy="6.987973255457208e-08" iyz="3.1210530960795887e-06" ixz="-5.270664658723196e-10" />
+        </inertial>
+        <visual name="upper_arm_single_body-v1_visual">
+            <origin xyz="0.0 0.0 -0.019" rpy="0.0 -0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/upper_arm_single_body-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="upper_arm_single_body-v1_collision">
+            <origin xyz="0.0 0.0 -0.019" rpy="0.0 -0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/upper_arm_single_body-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="upper_arm_2_single_body-v1">
+        <inertial>
+            <origin xyz="0.008446019770781472 -0.13286838656955429 -0.018743238324083204" rpy="0.0 -0.0 0.0" />
+            <mass value="0.112" />
+            <inertia ixx="0.0012086615521254007" iyy="0.0001754371686360878" izz="0.0011313683208190612" ixy="4.033887587564719e-05" iyz="3.7687852068339264e-07" ixz="1.6036962859261562e-07" />
+        </inertial>
+        <visual name="upper_arm_2_single_body-v1_visual">
+            <origin xyz="0.0 -4.263256414560601e-16 -0.018999999999999725" rpy="-1.5707963267948966 -2.425837308805972e-14 -1.5707963267948948" />
+            <geometry>
+                <mesh filename="meshes/upper_arm_2_single_body-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="upper_arm_2_single_body-v1_collision">
+            <origin xyz="0.0 -4.263256414560601e-16 -0.018999999999999725" rpy="-1.5707963267948966 -2.425837308805972e-14 -1.5707963267948948" />
+            <geometry>
+                <mesh filename="meshes/upper_arm_2_single_body-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="elbow_single_body-v1">
+        <inertial>
+            <origin xyz="-0.0190013306913858 0.03190176492268378 0.02585179571880932" rpy="0.0 -0.0 0.0" />
+            <mass value="0.060" />
+            <inertia ixx="0.00016552430609303656" iyy="0.00016297281795891582" izz="0.00020616587302901487" ixy="6.851875791530931e-09" iyz="-5.2904284584712025e-05" ixz="5.671293483720143e-09" />
+        </inertial>
+        <visual name="elbow_single_body-v1_visual">
+            <origin xyz="-0.018999999999997286 -0.009000000000000287 0.15717600000000023" rpy="-1.5707963267948963 1.5707963267948868 0" />
+            <geometry>
+                <mesh filename="meshes/elbow_single_body-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="elbow_single_body-v1_collision">
+            <origin xyz="-0.018999999999997286 -0.009000000000000287 0.15717600000000023" rpy="-1.5707963267948963 1.5707963267948868 0" />
+            <geometry>
+                <mesh filename="meshes/elbow_single_body-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="wrist_one_body-v1">
+        <inertial>
+            <origin xyz="-0.006281936225336011 0.026439423361127045 0.014496512300920406" rpy="-1.057930647999068e-76 -0.0 0.0" />
+            <mass value="0.031" />
+            <inertia ixx="2.002790762664507e-05" iyy="2.0247617719982842e-05" izz="2.586562329982096e-05" ixy="2.674502224782251e-06" iyz="4.0247606707620666e-09" ixz="3.052971119123958e-09" />
+        </inertial>
+        <visual name="wrist_one_body-v1_visual">
+            <origin xyz="1.8829382497642656e-15 0.013999999999999289 0.014500000000002866" rpy="-1.9682104583540626e-15 1.5707963267948957 0" />
+            <geometry>
+                <mesh filename="meshes/wrist_one_body-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="wrist_one_body-v1_collision">
+            <origin xyz="1.8829382497642656e-15 0.013999999999999289 0.014500000000002866" rpy="-1.9682104583540626e-15 1.5707963267948957 0" />
+            <geometry>
+                <mesh filename="meshes/wrist_one_body-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="joylo_holder-v1">
+        <inertial>
+            <origin xyz="0.0012434601961666188 -0.02099473368713256 0.06729597795823606" rpy="0.0 -2.6720333580835114e-48 0.0" />
+            <!-- <origin xyz="-0.012434601961666188 -0.02099473368713256 0.04729597795823606" rpy="0.0 -2.6720333580835114e-48 0.0" /> -->
+            <!-- <mass value="0.080" /> -->
+            <mass value="0.05" />
+            <inertia ixx="0.00035478126388715646" iyy="0.00021855578110229515" izz="0.00023677772730071295" ixy="1.591213408700917e-05" iyz="3.136923742750506e-05" ixz="-8.817531785510598e-06" />
+        </inertial>
+        <visual name="joylo_holder-v1_visual">
+            <origin xyz="-0.025199999999997398 -0.07230699999999736 0.050000000000001495" rpy="-1.5707963267948966 -1.5707963267948697 0" />
+            <geometry>
+                <mesh filename="meshes/joylo_holder-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="joylo_holder-v1_collision">
+            <origin xyz="-0.025199999999997398 -0.07230699999999736 0.050000000000001495" rpy="-1.5707963267948966 -1.5707963267948697 0" />
+            <geometry>
+                <mesh filename="meshes/joylo_holder-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="l4_single_body-v1">
+        <inertial>
+            <origin xyz="-0.00010674701059402381 0.03428529037097469 -0.000596499457020524" rpy="0.0 -0.0 0.0" />
+            <mass value="0.039" />
+            <inertia ixx="0.00016115973086454436" iyy="3.8162056763737595e-05" izz="0.0001534195473975068" ixy="2.2490475649525853e-07" iyz="-1.1893594840258343e-06" ixz="4.2665816597058404e-09" />
+        </inertial>
+        <visual name="l4_single_body-v1_visual">
+            <origin xyz="1.1901590823981679e-15 -0.007500000000000569 3.2082027193290973e-15" rpy="-1.5707963267948948 -1.5707963267948963 0" />
+            <geometry>
+                <mesh filename="meshes/l4_single_body-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="l4_single_body-v1_collision">
+            <origin xyz="1.1901590823981679e-15 -0.007500000000000569 3.2082027193290973e-15" rpy="-1.5707963267948948 -1.5707963267948963 0" />
+            <geometry>
+                <mesh filename="meshes/l4_single_body-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="base_link_base_to_upper_arm" type="revolute">
+        <origin xyz="0.0 0.0 0.019" rpy="0.0 -0.0 0.0" />
+        <parent link="base_link" />
+        <child link="upper_arm_single_body-v1" />
+        <axis xyz="0.0 0.0 1.0" />
+        <limit lower="-1.570796" upper="1.570796" effort="0.92" velocity="6.8" />
+    </joint>
+    <joint name="upper_arm_single_body-v1_upper_arm_to_upper_arm_2" type="revolute">
+        <origin xyz="0.019 0.0 0.025675000000000003" rpy="-3.141592653589793 -1.5707963267948966 0" />
+        <parent link="upper_arm_single_body-v1" />
+        <child link="upper_arm_2_single_body-v1" />
+        <axis xyz="0.0 0.0 1.0" />
+        <limit lower="0.0" upper="3.141593" effort="0.92" velocity="6.8" />
+    </joint>
+    <joint name="upper_arm_2_single_body-v1_upper_arm_2_to_elbow" type="revolute">
+        <origin xyz="0.008999999999999994 -0.156976 0.0" rpy="-1.5707963267948968 -1.5707963267948966 0" />
+        <parent link="upper_arm_2_single_body-v1" />
+        <child link="elbow_single_body-v1" />
+        <axis xyz="1.0 1.2325951644077924e-32 -3.1363800445660633e-15" />
+        <limit lower="-3.3161" upper="0.0" effort="0.92" velocity="6.8" />
+    </joint>
+    <joint name="wrist_one_body-v1_wrist_to_joylo" type="revolute">
+        <origin xyz="-0.014499999999999994 0.04300000000000001 0.014499999999999966" rpy="-1.5707963267948821 -1.570796326794896 0" />
+        <parent link="wrist_one_body-v1" />
+        <child link="joylo_holder-v1" />
+        <axis xyz="-2.7480576602647654e-32 -1.4461312833836658e-14 -1.0" />
+        <limit lower="-2.8798" upper="2.879793" effort="0.92" velocity="6.8" />
+    </joint>
+    <joint name="elbow_single_body-v1_elbow_to_forearm" type="revolute">
+        <origin xyz="-0.018999999999999854 0.03150000000000001 0.04580000000000002" rpy="1.5707963267948968 -1.2246467991473591e-16 0" />
+        <parent link="elbow_single_body-v1" />
+        <child link="l4_single_body-v1" />
+        <axis xyz="0.0 -1.0 2.2204460492503082e-16" />
+        <limit lower="-1.570796" upper="1.570796" effort="0.92" velocity="6.8" />
+    </joint>
+    <joint name="l4_single_body-v1_forearm_to_wrist" type="revolute">
+        <origin xyz="-0.000127000000000006 0.0605 -0.014373000000000014" rpy="5.689893001203932e-16 -4.379057701014995e-47 -3.944304526105059e-31" />
+        <parent link="l4_single_body-v1" />
+        <child link="wrist_one_body-v1" />
+        <axis xyz="-4.3790577010150533e-47 7.91033905045423e-16 1.0" />
+        <limit lower="-1.6581" upper="1.6581" effort="0.92" velocity="6.8" />
+    </joint>
+</robot>

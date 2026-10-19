@@ -1,0 +1,3 @@
+type: spacemouse
+control_type: ik
+robot_type: ${robot.type}

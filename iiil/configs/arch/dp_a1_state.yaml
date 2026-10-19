@@ -1,0 +1,91 @@
+# @package _global_
+
+arch_name: diffusion_state_a1
+
+wandb_entity: I3L
+wandb_project: IIIL
+
+# ====== Policy specific ======
+horizon: 16
+num_latest_obs: 2
+deployed_action_steps: 8
+bs: 128
+vbs: 16
+max_steps: 125000
+val_check_interval: 12500
+
+# ====== Policy Module ======
+module:
+  _target_: il_lib.policies.DiffusionPolicy
+  prop_dim: 7
+  prop_keys: [qpos/arm, qpos/gripper]
+  # ====== Feature Extractors ======
+  feature_extractors:
+    proprioception:
+      _target_: il_lib.nn.common.MLP
+      input_dim: ${module.prop_dim}
+      hidden_dim: 512
+      output_dim: 512
+      hidden_depth: 2
+      add_output_activation: true
+    task:
+      _target_: il_lib.nn.common.MLP
+      input_dim: 6
+      hidden_dim: 512
+      output_dim: 512
+      hidden_depth: 2
+      add_output_activation: true
+  # ====== Feature Fusion ======
+  feature_fusion_hidden_depth: 2
+  feature_fusion_hidden_dim: 512
+  feature_fusion_output_dim: 512
+  feature_fusion_activation: relu
+  feature_fusion_add_input_activation: false
+  feature_fusion_add_output_activation: true
+  # ====== Action ======
+  action_dim: 7
+  action_keys: ${robot.action_keys}
+  action_key_dims: ${robot.action_key_dims}
+  num_latest_obs: ${num_latest_obs}
+  # ====== Backbone ======
+  backbone:
+    _target_: il_lib.nn.diffusion.ConditionalUnet1D
+    input_dim: ${module.action_dim}
+    local_cond_dim: null
+    global_cond_dim: ${eval:'${module.feature_fusion_output_dim} * ${num_latest_obs}'}
+    diffusion_step_embed_dim: 128
+    down_dims: [64, 128]
+    kernel_size: 5
+    n_groups: 8
+    cond_predict_scale: true
+  # ====== Diffusion ======
+  noise_scheduler:
+    _target_: diffusers.schedulers.scheduling_ddim.DDIMScheduler
+    num_train_timesteps: 100
+    beta_start: 0.0001
+    beta_end: 0.02
+    # beta_schedule is important
+    # this is the best we found
+    beta_schedule: squaredcos_cap_v2
+    clip_sample: true
+    set_alpha_to_one: true
+    steps_offset: 0
+    prediction_type: epsilon # or sample
+  noise_scheduler_step_kwargs: null
+  num_denoise_steps_per_inference: 16
+  horizon: ${horizon}
+  deployed_action_steps: ${deployed_action_steps}
+  optimizer: adamw
+
+data:
+  dataset_class: iiil.datas.IIILSamplingDataset
+  reweight_strategy: null
+  use_action_chunks: false
+  visual_obs_types: []
+  use_task_info: true
+  load_visual_obs_to_memory: false
+  rank_based_partitioning: false
+  downsample_factor: 1 
+
+trainer:
+  use_distributed_sampler: ${eval:'not ${data.rank_based_partitioning}'}

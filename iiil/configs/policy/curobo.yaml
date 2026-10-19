@@ -1,0 +1,6 @@
+type: curobo
+control_type: joint
+action_buffer_len: null
+max_retry_before_fail: 1
+robot_type: ${robot.type}
+base_position_delta_limits: [0.03, 0.03, 0.04]

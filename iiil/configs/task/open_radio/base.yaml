@@ -1,0 +1,13 @@
+# @package _global_
+
+task:
+  type: OpenRadioTask
+  name: ${task.type}
+  show_trajectory: false
+  randomize_robot_pose_prob: 1.0
+  randomize_initial_pose_prob: 1.0
+  termination_config:
+    hold_step_threshold: 20
+    episode_timeout_step: 900
+    total_episode: 50
+    total_successful_episode: null

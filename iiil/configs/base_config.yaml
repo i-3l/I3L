@@ -1,0 +1,38 @@
+defaults:
+  - _self_  # all below configs will override this conf.yaml
+  - policy: ???
+  - task: ???
+  - robot: ???
+  - env: ???
+
+hydra:
+  job:
+    chdir: true
+  run:
+    dir: .
+  sweep:
+    dir: .
+  output_subdir: null
+
+hdf_path: ???
+overwrite: false
+log_only_success: true
+manual_save_discard: true
+video_recording_path: null
+results_json_path: null
+mode: null
+seed: null
+
+# Rate limiting - enforce target Hz from env.cfg.env.frequency
+# Default false for lowest latency; data collection yaml sets to true
+enforce_frequency: false
+
+# When true, real robot reset() physically moves the robot to its home pose.
+# Disabled by default because some teleop / correction modes manage homing manually.
+reset_robot_on_env_reset: false
+
+# Verbose logging - print actions and other debug info
+verbose: false
+
+# CLI dashboard - compact in-place status display
+dashboard: true

@@ -1,0 +1,64 @@
+# Shared Autonomy Policy Configuration
+type: sa
+control_type: joint
+robot_type: ${robot.type}
+
+# Base policy configuration (the policy that normally controls the robot)
+base_policy:
+  # type: curobo
+  # type: gello
+  # type: noise
+  type: il
+
+# Oracle policy configuration (the policy that takes over during interruption)
+oracle_policy:
+  # type: gello
+
+  type: curobo
+  action_buffer_len: 20
+
+switch_check_interval: 5
+switch_min_interval: 20
+
+# Optional whole-body detector weights for R1Pro. Keys match controller groups
+# or robot config aliases: base, torso/trunk, left_arm/arm_left,
+# right_arm/arm_right, left_gripper/gripper_left, right_gripper/gripper_right.
+detector_component_weights: 
+  base: 5.0
+  torso: 0.05
+  left_arm: 0.0
+  left_gripper: 0.0
+  right_arm: 1.0
+  right_gripper: 0.5
+
+# Interrupt detector configuration
+# Options: "threshold_interrupt_detector", "sklearn_interrupt_detector", "voltage_based_detector",
+# "policy_comparison_detector", "mahalanobis_detector", "keyboard_interrupt_detector"
+# interrupt_detector: voltage_based_detector
+interrupt_detector: keyboard_interrupt_detector
+interrupt_detector_config: {}
+# Example:
+# interrupt_detector_config:
+#   interrupt_threshold: [0.25, 0.16, 0.16, 0.7]
+#   moving_threshold: 0.002
+
+# Release detector configuration
+# Options: "threshold_release_detector", "voltage_based_detector", "mahalanobis_release_detector",
+# "policy_comparison_detector", "mahalanobis_detector", "keyboard_interrupt_detector"
+# release_detector: voltage_based_detector
+release_detector: keyboard_interrupt_detector
+release_detector_config: {}
+# Example:
+# release_detector_config:
+#   release_threshold: [0.09, 0.05, 0.05, 0.09]
+
+# Passive observer: logs metrics each step without controlling switching
+# Options: "mahalanobis_detector", "mahalanobis_release_detector"
+passive_observer: null
+passive_observer_config: {}
+# Example:
+# passive_observer: mahalanobis_detector
+# passive_observer_config:
+#   calibration_path: /path/to/calibration.npz
+#   interrupt_threshold: 40.0
+#   release_threshold: 19.31

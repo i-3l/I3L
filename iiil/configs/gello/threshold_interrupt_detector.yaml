@@ -1,0 +1,18 @@
+type: threshold_interrupt_detector
+
+# Logging configuration
+log_path: "position_velocity_trajectory_no_interrupt.h5"  # Path to save the hdf5 log file. If null, no logging will be done.
+log_frequency: 100  # Number of samples to collect before writing to the h5py file
+
+# Filter configuration
+filter_width: 10  # Width of the moving average filter for smoothing eef difference
+
+# Threshold configuration for all joints
+# current_thresholds: [250, 250, 250, 150, 150, 150]
+# current_thresholds: [100, 275, 200, 100, 150, 70]
+
+# For not interrupting at all
+current_thresholds: [100000, 100000, 100000, 100000, 100000, 100000]
+
+# Exponential average filter for current configuration
+current_filter_width: 3

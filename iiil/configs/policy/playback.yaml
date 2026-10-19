@@ -1,0 +1,11 @@
+type: playback
+control_type: joint
+robot_type: ${robot.type}
+model:
+  hdf_path: ${hdf_path}  # Uses top-level hdf_path
+  is_gripper: true
+  action_repeat: 1
+  demo_ids: null    # List of demo indices to play (e.g., [0, 2, 5]). null = all demos
+  repeat: 1         # Number of times to repeat the selected demos
+  use_timestamps: true   # Use recorded timestamps for exact replay timing (requires time/timestamp_ms in data)
+  playback_frequency: 30  # Hz - fallback if use_timestamps=false or no timestamps in data

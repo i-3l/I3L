@@ -1,0 +1,29 @@
+# Binary Tarjan: base IL policy + correction IL policy with keyboard switching
+type: sa
+control_type: joint
+robot_type: ${robot.type}
+
+base_policy:
+  type: il
+  port: 8003
+
+oracle_policy:
+  type: curobo
+  action_buffer_len: 20
+
+switch_check_interval: 1
+switch_min_interval: 1
+
+interrupt_detector: keyboard_interrupt_detector
+interrupt_detector_config: {}
+
+release_detector: keyboard_interrupt_detector
+release_detector_config: {}
+
+detector_component_weights:
+  base: 1.0
+  torso: 0.0
+  left_arm: 0.0
+  left_gripper: 0.0
+  right_arm: 1.0
+  right_gripper: 1.0

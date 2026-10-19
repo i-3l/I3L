@@ -1,0 +1,228 @@
+# Franka Panda Joylo Configuration
+# Single Franka arm (7 DOF)
+# 3 high-powered servos (XL430, joints 0,1,3) and 4 low-powered servos (XL330, joints 2,4,5,6)
+#
+# Joint offset translation from FrankaJoylo config.json:
+#   iiil_offset = fj_offset + (2048 - DXL_ZERO_OFFSETS) * fj_sign * pi/2048
+# where DXL_ZERO_OFFSETS = [3072, 1024, 0, 1024, 2048, 1024, 0]
+#       fj_signs = [1, 1, 1, -1, 1, -1, 1]
+#       fj_offsets = [0.0, 0.034, 0.0, -0.200, -3.268, 3.211, -0.7]
+
+type: gello
+
+# Controller type
+bilateral_control_type: bilateral
+
+# Control settings
+control_frequency: 100  # Hz
+driver_type: current  # Only current control for bilateral operation
+debug: false
+
+# Console debug messages
+debug_messages:
+  enable: false
+  control_loop: false
+  tracking: false
+  user_control: false
+  takeover: false
+  release: false
+  goal_reached: false
+
+# Joint offsets in radians (translated from FrankaJoylo calibration)
+# These map IIIL's encoder-center-at-2048 convention to match FrankaJoylo's per-joint DXL_ZERO_OFFSETS
+# Joint 6 is deliberately shifted -pi from the calibration translation (2.4416 -> -0.7000)
+# so the gello handle homes rotated 180 deg for backwards teleop; robot pose is unchanged.
+joint_offsets: [-1.5708, 1.6046, 3.1416, -2.3, -3.2681, 1.6402, -0.7000]
+
+# Franka joint limits (from libfranka spec / MuJoCo model)
+# Required for proper angle wrapping when encoder conversion produces values outside [-π, π].
+# Without these, the default [-π, π] clip silently corrupts angles for joints with large offsets.
+joint_limits:
+  lower: [-2.8973, -1.7628, -2.8973, -3.0718, -2.8973, -0.0175, -2.8973]
+  upper: [2.8973, 1.7628, 2.8973, -0.0698, 2.8973, 3.7525, 2.8973]
+
+# GELLO_TO_ENV mode configuration
+gello_to_env:
+  torque_enabled: true  # Enable torque for gravity + anti-friction in teleop mode
+
+# Motor groups configuration
+# Mapping from FrankaJoylo's JOINT_MAP:
+#   Joint 0 → 12V motor 0, Joint 1 → 12V motor 1, Joint 2 → 5V motor 0
+#   Joint 3 → 12V motor 2, Joint 4 → 5V motor 1, Joint 5 → 5V motor 2, Joint 6 → 5V motor 3
+motor_groups:
+  # High Power Servos - XL430 (12V) → Franka joints 0, 1, 3
+  - motor_ids: [0, 1, 2]
+    motor_type: "XL430-W250-T"
+    robot_joint_indices: [0, 1, 3]
+    arm_joint_signs: [1, 1, -1]
+    device_port: "/dev/franka_large"
+    baudrate: 1000000
+    max_joint_velocity: 1.0  # rad/s
+    position_deadband: 3  # encoder ticks
+
+  # Low Power Servos - XC330-M288 (5V) → Franka joints 2, 4, 5, 6
+  - motor_ids: [0, 1, 2, 3]
+    motor_type: "XC330-M288-T"
+    robot_joint_indices: [2, 4, 5, 6]
+    arm_joint_signs: [1, 1, -1, 1]
+    device_port: "/dev/franka_small"
+    baudrate: 1000000
+    max_joint_velocity: 1.0  # rad/s
+    position_deadband: 3  # encoder ticks
+
+# Compensation configuration
+compensation:
+  # Gravity compensation using Franka Joylo URDF
+  gravity:
+    enable: true
+    urdf_path: "assets/gello_franka_urdf/robot.urdf"
+    # URDF frame: +x is up, +y is forward → gravity along -x
+    gravity_vector: [-9.81, 0, 0]
+    # Conservative starting multipliers — tune on hardware
+    # Joint 0 (yaw) = 0.0 (vertical axis, no gravity torque)
+    # Joint 6 (end) = 0.0 (negligible mass beyond)
+    # Joints 3,5 are NEGATIVE because arm_joint_signs=-1 for those joints
+    # (gravity torque computed in URDF frame, negative multiplier converts to motor frame)
+    multipliers: [0.0, -0.4, 0.5, -0.5, 0.3, -0.3, 0.0]
+
+  # Static friction compensation
+  friction:
+    enable: false
+    speed_threshold: 0.0
+    gain: 0.0
+
+  # Anti-friction compensation (assists backdriving)
+  anti_friction:
+    enable: true
+    viscous_gain: 0.01
+    coulomb_gain: 0.0
+    velocity_deadband: 0.005
+    per_joint_viscous_gains: [0.01, 0.02, 0.01, 0.02, 0.03, 0.01, 0.01]
+
+# Goal tracking configuration (for ENV_TO_GELLO and admittance modes)
+goal_tracking:
+  enable: true
+  # Conservative PID gains - tune with scripts/auto_tune_takeover.py
+  kp: [0.1, 0.1, 0.0, 0.1, 0.0, 0.0, 0.0]
+  ki: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  kd: [0.05, 0.05, 0.0, 0.05, 0.0, 0.0, 0.0]
+  integral_limit: 0.5
+  reset_integral_on_goal_change: true
+
+  feedforward:
+    enable: false
+    kff: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    velocity_filter_alpha: 0.3
+
+# Admittance stiffness override (leave null to use goal_tracking defaults)
+admittance_stiffness:
+  kp: null
+  ki: null
+  kd: null
+
+# Stiffness during human takeover
+takeover_stiffness:
+  kp: null
+  ki: null
+  kd: null
+
+# Capacitive touch sensor (ESP32-S3 + MPR121)
+# See iiil/gello/capacitive_sensor/README.md for setup and scripts/99-touch-sensor.rules for udev.
+touch_sensor:
+  enable: true
+  port: "/dev/tty_touch_sensor"
+  baudrate: 115200
+  num_channels: 1
+  reconnect_interval: 2.0
+  stale_timeout: 0.5
+
+# Takeover detection
+# Touch-only mode: Joylo is lightweight so current-based detection needs careful tuning.
+# Touch sensor provides clean binary signal — no filtering pipeline needed.
+takeover:
+  enable: true
+
+  use_touch: true
+  touch_release_cooldown: 0.5
+
+  # Current filtering pipeline (kept for future mixed-mode tuning)
+  current_filter:
+    ema_enable: true
+    alpha: 0.2
+    spike_median_enable: true
+    spike_median_window: 7
+    spike_clamp_enable: true
+    spike_clamp_max: 30.0
+    butterworth_enable: true
+    butterworth_cutoff: 4.5
+    butterworth_order: 2
+
+  # Position filtering
+  position_filter:
+    ema_enable: false
+    alpha: 0.3
+    spike_median_enable: false
+    spike_median_window: 11
+    spike_clamp_enable: false
+    spike_clamp_max: 0.1
+
+  # Velocity filtering
+  velocity_filter:
+    ema_enable: false
+    alpha: 0.3
+    spike_median_enable: false
+    spike_median_window: 5
+    spike_clamp_enable: false
+    spike_clamp_max: 1.0
+
+  # Detection methods — touch-only mode (disable current/position for clean binary detection)
+  use_current: false
+  use_position: false
+  use_velocity: false
+
+  # Thresholds (conservative starting values - tune on hardware)
+  current_threshold: [10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0]
+  position_threshold: [0.25, 0.25, 0.25, 0.25, 0.15, 0.15, 0.15]
+  velocity_threshold: 0.3
+
+  # Temporal filtering
+  window_size: 20  # frames (200ms at 100Hz)
+
+  # Auto-return
+  enable_auto_return: true
+  auto_return_timeout: 0.3
+  release_velocity: 0.05
+  release_current_derivative: 10.0
+  takeover_grace_period: 0.2
+
+# Debug logging
+debug_logging:
+  enable: false
+  log_to_file: true
+  log_directory: "logs/debug"
+  buffer_size: 10000
+  flush_interval: 10
+
+  signals:
+    - measured_currents
+    - tracking_currents
+    - gravity_currents
+    - friction_currents
+    - expected_currents
+    - current_diff
+    - filtered_current_diff
+    - position_error
+    - velocities
+    - goal_position
+    - current_position
+    - signed_position_error
+
+  plotting:
+    enable: false
+    backend: "matplotlib"
+    update_rate: 10
+    window_duration: 60.0
+    y_limits:
+      currents: [-150, 150]
+      position_error: [-0.5, 0.5]
+      velocities: [-2.0, 2.0]
